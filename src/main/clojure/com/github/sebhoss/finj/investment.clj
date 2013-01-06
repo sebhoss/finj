@@ -1,4 +1,4 @@
-(ns com.github.sebhoss.finlib.investment)
+(ns com.github.sebhoss.finj.investment)
 
 (defn net-present-value
   "
