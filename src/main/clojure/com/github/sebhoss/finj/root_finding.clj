@@ -26,7 +26,6 @@
           (recur (next-first result) (next-second result) (inc iteration))))
       (throw (IllegalArgumentException. "max number of iterations exceeded - could not satisfy tolerance")))))
 
-
 (defn bisect
   "Root-finding method which repeatedly bisects an interval and then selects a subinterval in which a root must lie for
    further processing. It is a very simple and robust method, but it is also relatively slow. Because of this, it is
@@ -46,7 +45,7 @@
   {:pre [(< lower-startpoint upper-startpoint)
          (sgn-opposite? (function lower-startpoint) (function upper-startpoint))]
    :post [(< (:first-value %) (:second-value %))]}
-  (iter-root-search 
+  (iter-root-search
     :function function
     :start-first-value lower-startpoint
     :start-second-value upper-startpoint
@@ -63,7 +62,6 @@
                      (:estimate result)
                      (:second-value result)))
     ))
-
 
 (defn secant
   "The secant method is a root-finding method.

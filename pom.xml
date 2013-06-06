@@ -3,6 +3,7 @@
   <groupId>com.github.sebhoss</groupId>
   <artifactId>finj</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>clojure</packaging>
   <name>finj</name>
   <description>finance library written in clojure.</description>
 
@@ -20,16 +21,9 @@
         <groupId>com.theoryinpractise</groupId>
         <artifactId>clojure-maven-plugin</artifactId>
         <version>1.3.13</version>
-        <executions>
-          <execution>
-            <id>compile-clojure</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-          </execution>
-        </executions>
+        <extensions>true</extensions>
       </plugin>
+
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>

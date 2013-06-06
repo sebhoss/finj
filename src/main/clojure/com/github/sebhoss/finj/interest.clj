@@ -11,7 +11,7 @@
 
 (defn present-value [& {:keys [future-value rate period]}]
   (/ future-value
-     (+ 1 (* rate period))))
+     (inc (* rate period))))
 
 (defn rate [& {:keys [future-value present-value period]}]
   (/ (- future-value present-value)
