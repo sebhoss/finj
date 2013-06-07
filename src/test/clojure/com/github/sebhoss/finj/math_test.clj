@@ -2,16 +2,6 @@
   (:require [com.github.sebhoss.finj.math :refer :all]
             [clojure.test :refer :all]))
 
-(deftest abs-test
-  (testing "with positive numbers"
-    (is (= 1 (abs 1)))
-    (is (= 2 (abs 2))))
-  (testing "with negative numbers"
-    (is (= 1 (abs -1)))
-    (is (= 2 (abs -2))))
-  (testing "with zero"
-    (is (= 0 (abs 0)))))
-
 (deftest sgn-eq?-test
   (testing "with equal signed numbers"
     (is (sgn-eq? 1 2))

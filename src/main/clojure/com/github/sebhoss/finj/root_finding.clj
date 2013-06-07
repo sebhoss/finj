@@ -1,6 +1,7 @@
 (ns com.github.sebhoss.finj.root-finding
   "Root finding algorithms"
-  (:require [com.github.sebhoss.finj.math :refer :all]))
+  (:require [com.github.sebhoss.finj.math :refer :all]
+            [clojure.math.numeric-tower :refer :all]))
 
 (defrecord SearchResult [estimate estimation-error number-of-iterations first-value second-value])
 
@@ -146,7 +147,7 @@
   2)
 
 (defn g [x]
-  (+ (exp x 3) (* x 4)))
+  (+ (expt x 3) (* x 4)))
 (defn g1 [x]
   (+ (* x 3) 4))
 
