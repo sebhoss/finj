@@ -114,7 +114,7 @@
 (defn sqrt
   "(sqrt n) is square root of n"
   [n]
-  {:pre [(number? n)]}
+  {:pre [(or (zero? n) (pos? n))]}
   (Math/sqrt n))
 
 (defn log

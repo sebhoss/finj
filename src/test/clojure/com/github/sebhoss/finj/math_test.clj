@@ -123,3 +123,11 @@
     (is (= -1 (round -1.2))))
   (testing "with zero"
     (is (= 0 (round 0.0)))))
+
+(deftest sqrt-test
+  (testing "with positive integers"
+    (is (= 2.0 (sqrt 4))))
+  (testing "with negative integers"
+    (is (thrown? AssertionError (sqrt -8))))
+  (testing "with zero"
+    (is (= 0.0 (sqrt 0)))))
