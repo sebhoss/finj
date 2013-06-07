@@ -1,4 +1,4 @@
-(ns com.github.sebhoss.finj.annuity
+(ns com.github.sebhoss.finj.benefit
   (:require [com.github.sebhoss.finj.math :refer :all]))
 
 (defn final-due-value [& {:keys [payment accumulation-factor period]}]
