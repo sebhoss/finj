@@ -1,13 +1,12 @@
 (ns com.github.sebhoss.finj.root-finding
   "Root finding algorithms"
-  (:require [com.github.sebhoss.finj.math :refer :all]
-            [clojure.math.numeric-tower :refer :all]))
+  (:require [com.github.sebhoss.finj.math :refer :all]))
 
 (defrecord SearchResult [estimate estimation-error number-of-iterations first-value second-value])
 
 (defn iter-root-search
   "Iterative search for a root using two values as inputs."
-  [& {:keys [^IFn function ^Number start-first-value ^Number start-second-value ^Number tolerance
+  [& {:keys [^IFn function ^Number first-value ^Number second-value ^Number tolerance
              ^Number max-iterations ^IFn next-estimate ^IFn next-first ^IFn next-second]
       :or {tolerance 0.00001
            max-iterations 100}}]
@@ -15,8 +14,8 @@
          (pos? max-iterations)]
    :post [(< (abs (:estimation-error %)) tolerance)
           (pos? (:number-of-iterations %))]}
-  (loop [first-value start-first-value
-         second-value start-second-value
+  (loop [first-value first-value
+         second-value second-value
          iteration 1]
     (if (<= iteration max-iterations)
       (let [estimate (next-estimate first-value second-value)
@@ -48,8 +47,8 @@
    :post [(< (:first-value %) (:second-value %))]}
   (iter-root-search
     :function function
-    :start-first-value lower-startpoint
-    :start-second-value upper-startpoint
+    :first-value lower-startpoint
+    :second-value upper-startpoint
     :tolerance tolerance
     :max-iterations max-iterations
     :next-estimate (fn [first-value second-value]
@@ -72,8 +71,8 @@
   [& {:keys [function first second tolerance max-iterations]}]
   (iter-root-search
     :function function
-    :start-first-value first
-    :start-second-value second
+    :first-value first
+    :second-value second
     :tolerance tolerance
     :max-iterations max-iterations
     :next-estimate (fn [first-value second-value]
@@ -96,8 +95,8 @@
   [& {:keys [function derivative min-denominator start-value tolerance max-iterations]}]
   (iter-root-search 
     :function function
-    :start-first-value start-value
-    :start-second-value nil
+    :first-value start-value
+    :second-value nil
     :tolerance tolerance
     :max-iterations max-iterations
     :next-estimate (fn [first-value second-value]
@@ -122,8 +121,8 @@
    :post [(< (:first-value %) (:second-value %))]}
   (iter-root-search
     :function function
-    :start-first-value lower-startpoint
-    :start-second-value upper-startpoint
+    :first-value lower-startpoint
+    :second-value upper-startpoint
     :tolerance tolerance
     :max-iterations max-iterations
     :next-estimate (fn [first-value second-value]
@@ -140,16 +139,3 @@
                      (:estimate result)
                      (:second-value result)))
     ))
-
-(defn f [x]
-  (+ (* x 2) 3))
-(defn f1 [x]
-  2)
-
-(defn g [x]
-  (+ (expt x 3) (* x 4)))
-(defn g1 [x]
-  (+ (* x 3) 4))
-
-; => (bisect f -2 15 0.00001 100)
-; => (secant g -2 15 0.00001 100)
