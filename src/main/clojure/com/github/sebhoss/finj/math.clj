@@ -108,7 +108,7 @@
 (defn round
   "(round n) is n rounded to the nearest integer"
   [n]
-  {:pre [(number? n)]}
+  {:pre [(float? n)]}
   (Math/round n))
 
 (defn sqrt

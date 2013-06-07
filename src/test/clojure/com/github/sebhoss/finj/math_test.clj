@@ -12,6 +12,16 @@
   (testing "with zero"
     (is (= "" (sgn 0)))))
 
+(deftest signum-test
+  (testing "with positive numbers"
+    (is (= 1 (signum 1)))
+    (is (= 1 (signum 1/12))))
+  (testing "with negative numbers"
+    (is (= -1 (signum -1)))
+    (is (= -1 (signum -1/12))))
+  (testing "with zero"
+    (is (= 0 (signum 0)))))
+
 (deftest sgn-eq?-test
   (testing "with equal signed integers"
     (is (sgn-eq? 1 2))
@@ -71,3 +81,45 @@
     (is (approx-zero? -1 2)))
   (testing "with zero"
     (is (approx-zero? 0 2))))
+
+(deftest gcd-test
+  (testing "with positive integers"
+    (is (= 5 (gcd 10 5))))
+  (testing "with negative integers"
+    (is (= 5 (gcd 10 -5)))
+    (is (= 5 (gcd -10 5))))
+  (testing "with zeros"
+    (is (= 10 (gcd 10 0)))))
+
+(deftest lcm-test
+  (testing "with positive integers"
+    (is (= 10 (lcm 10 5))))
+  (testing "with negative integers"
+    (is (= 10 (lcm 10 -5)))
+    (is (= 10 (lcm -10 5))))
+  (testing "with zeros"
+    (is (= 0 (lcm 10 0)))))
+
+(deftest floor-test
+  (testing "with positive numbers"
+    (is (= 1.0 (floor 1.2))))
+  (testing "with negative numbers"
+    (is (= -2.0 (floor -1.2))))
+  (testing "with zero"
+    (is (= 0.0 (floor 0)))))
+
+(deftest ceil-test
+  (testing "with positive numbers"
+    (is (= 2.0 (ceil 1.2))))
+  (testing "with negative numbers"
+    (is (= -1.0 (ceil -1.2))))
+  (testing "with zero"
+    (is (= 0.0 (ceil 0)))))
+
+(deftest round-test
+  (testing "with positive numbers"
+    (is (= 1 (round 1.2))))
+  (testing "with negative numbers"
+    (is (= -1 (round -1.2))))
+  (testing "with zero"
+    (is (= 0 (round 0.0)))))
