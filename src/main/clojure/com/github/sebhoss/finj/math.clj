@@ -12,6 +12,8 @@
    diameter."
   (Math/PI))
 
+(def not-nil? (comp not nil?))
+
 (defn mean
   "(mean x y) is the mean value of x and y"
   [x y]
