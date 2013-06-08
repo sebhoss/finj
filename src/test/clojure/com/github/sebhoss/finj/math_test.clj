@@ -66,21 +66,21 @@
     (is (= 2 (mean -1 5)))
     (is (= -3 (mean 1 -7)))))
 
-(deftest approx?-test
+(deftest fuzzy-eq?-test
   (testing "with positive integers"
-    (is (approx? 1 2 3)))
+    (is (fuzzy-eq? 1 2 3)))
   (testing "with negative integers"
-    (is (approx? -1 -2 3)))
+    (is (fuzzy-eq? -1 -2 3)))
   (testing "with zero"
-    (is (approx? 0 0 1))))
+    (is (fuzzy-eq? 0 0 1))))
 
-(deftest approx-zero?-test
+(deftest fuzzy-zero?-test
   (testing "with positive integers"
-    (is (approx-zero? 1 2)))
+    (is (fuzzy-zero? 1 2)))
   (testing "with negative integers"
-    (is (approx-zero? -1 2)))
+    (is (fuzzy-zero? -1 2)))
   (testing "with zero"
-    (is (approx-zero? 0 2))))
+    (is (fuzzy-zero? 0 2))))
 
 (deftest gcd-test
   (testing "with positive integers"
@@ -128,6 +128,44 @@
   (testing "with positive integers"
     (is (= 2.0 (sqrt 4))))
   (testing "with negative integers"
-    (is (thrown? AssertionError (sqrt -8))))
+    (is (Double/isNaN (sqrt -8))))
   (testing "with zero"
     (is (= 0.0 (sqrt 0)))))
+
+(deftest root-test
+  (testing "with positive integers"
+    (is (= 2.0 (root 3 8))))
+  (testing "with negative integers"
+    (is (Double/isNaN (root 3 -8))))
+  (testing "with zero"
+    (is (= 0.0 (root 3 0)))))
+
+(deftest log2-test
+  (testing "with integer"
+    (is (float? (log2 (int 1)))))
+  (testing "with long"
+    (is (float? (log2 (long 1)))))
+  (testing "with float"
+    (is (float? (log2 (float 1)))))
+  (testing "with double"
+    (is (float? (log2 (double 1))))))
+
+(deftest ln-test
+  (testing "with integer"
+    (is (float? (ln (int 1)))))
+  (testing "with long"
+    (is (float? (ln (long 1)))))
+  (testing "with float"
+    (is (float? (ln (float 1)))))
+  (testing "with double"
+    (is (float? (ln (double 1))))))
+
+(deftest log10-test
+  (testing "with integer"
+    (is (float? (log10 (int 1)))))
+  (testing "with long"
+    (is (float? (log10 (long 1)))))
+  (testing "with float"
+    (is (float? (log10 (float 1)))))
+  (testing "with double"
+    (is (float? (log10 (double 1))))))

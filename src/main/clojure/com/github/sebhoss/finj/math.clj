@@ -1,5 +1,7 @@
 (ns com.github.sebhoss.finj.math
-  "Misc math functions")
+  "Misc math functions"
+  (:import (com.google.common.math IntMath LongMath BigIntegerMath DoubleMath))
+  (:import (java.math RoundingMode)))
 
 (def ^:const e
   "e is the double value that is closer than any other to e, the base of the natural logarithms."
@@ -10,38 +12,6 @@
    diameter."
   (Math/PI))
 
-(defn sgn
-  "(sgn x) returns '+' for a positive, '-' for a negative number or an empty string for zero."
-  [x]
-  {:pre [(number? x)]}
-  (cond
-    (neg? x) "-"
-    (pos? x) "+"
-    :else ""))
-
-(defn signum
-  "(signum x) returns 0 if x is zero, 1 if x is greater than zero, -1 if x is less than zero"
-  [x]
-  {:pre [(number? x)]}
-  (cond
-    (neg? x) -1
-    (pos? x) 1
-    :else 0))
-
-(defn sgn-eq?
-  "(sgn-eq? x y) returns true if both x and y share the same sign."
-  [x y]
-  {:pre [(number? x)
-         (number? y)]}
-  (= (sgn x) (sgn y)))
-
-(defn sgn-opposite?
-  "(sgn-opposite? x y) returns true if x and y do not share the same sign."
-  [x y]
-  {:pre [(number? x)
-         (number? y)]}
-  (not (sgn-eq? x y)))
-
 (defn mean
   "(mean x y) is the mean value of x and y"
   [x y]
@@ -50,27 +20,12 @@
   (/ (+ x y) 2))
 
 (defn abs
-  "(abs n) is the absolute value of n"
-  [n]
-  {:pre [(number? n)]}
-  (if (neg? n)
-    (- n)
-    n))
-
-(defn approx?
-  "(approx? x y epsilon) returns true if the difference between x and y is less than epsilon."
-  [x y epsilon]
-  {:pre [(number? x)
-         (number? y)
-         (number? epsilon)]}
-  (< (abs (- x y)) epsilon))
-
-(defn approx-zero?
-  "(approx-zero? x epsilon) returns true if x is within epsilon of zero."
-  [x epsilon]
-  {:pre [(number? x)
-         (number? epsilon)]}
-  (approx? x 0 epsilon))
+  "(abs x) is the absolute value of x"
+  [x]
+  {:pre [(number? x)]}
+  (if (neg? x)
+    (- x)
+    x))
 
 (defn gcd
   "(gcd x y) returns the greatest common divisor of x and y"
@@ -93,100 +48,86 @@
     (zero? y) 0
     :else (abs (* y (/ x (gcd x y))))))
 
-(defn floor
-  "(floor n) is n rounded down"
-  [n]
-  {:pre [(number? n)]}
-  (Math/floor n))
+(defprotocol Fuzzy
+  (fuzzy-eq? [x y epsilon] "(fuzzy? x y epsilon) returns true if the difference between x and y is less than epsilon")
+  (fuzzy-zero? [x epsilon] "(fuzzy-zero? x epsilon) returns true if x is within epsilon of zero"))
+(extend-protocol Fuzzy
+  Number
+    (fuzzy-eq? [x y epsilon]
+      (< (abs (- x y)) epsilon))
+    (fuzzy-zero? [x epsilon]
+      (fuzzy-eq? x 0 epsilon)))
 
-(defn ceil
-  "(ceil n) is n rounded up"
-  [n]
-  {:pre [(number? n)]}
-  (Math/ceil n))
+(defprotocol Rounding
+  (floor [x] "(floor x) is n rounded down")
+  (ceil [x] "(ceil x) is n rounded up")
+  (round [x] "(round x) is n rounded to the nearest integer"))
+(extend-protocol Rounding
+  Number
+    (floor [x] (Math/floor x))
+    (ceil [x] (Math/ceil x))
+    (round [x] (Math/round x)))
 
-(defn round
-  "(round n) is n rounded to the nearest integer"
-  [n]
-  {:pre [(float? n)]}
-  (Math/round n))
+(defprotocol Sign
+  (sgn [x] "(sgn x) returns '+' for positive, '-' for negative numbers and an empty string for zero")
+  (signum [x] "(signum x) returns 1 for positive, -1 for negative numbers and 0 for zero")
+  (sgn-eq? [x y] "(sgn-eq? x y) returns true if both x and y share the same sign")
+  (sgn-opposite? [x y] "(sgn-opposite? x y) returns true if x and y do not share the same sign"))
+(extend-protocol Sign
+  Number
+    (sgn [x]
+      (cond
+        (neg? x) "-"
+        (pos? x) "+"
+        :else ""))
+    (signum [x]
+      (cond
+        (neg? x) -1
+        (pos? x) 1
+        :else 0))
+    (sgn-eq? [x y]
+      (= (sgn x) (sgn y)))
+    (sgn-opposite? [x y]
+      (not (sgn-eq? x y))))
 
-(defn sqrt
-  "(sqrt n) is square root of n"
-  [n]
-  {:pre [(or (zero? n) (pos? n))]}
-  (Math/sqrt n))
+(defprotocol Logarithm
+  (log2 [x] "(log2 x) is the base 2 logarithm of x")
+  (ln [x] "(ln x) is the natural (base e) logarithm of x")
+  (log10 [x] "(log10 x) is the base 10 logarithm of x"))
+(extend-protocol Logarithm
+  Number
+    (log2 [x] (DoubleMath/log2 x))
+    (ln [x] (Math/log x))
+    (log10 [x] (Math/log10 x)))
 
-(defn log
-  "(log n) is natural logarithms of n"
-  [n]
-  {:pre [(number? n)]}
-  (Math/log n))
+(defprotocol Exponent
+  (exp [power] "(exp n) is Euler's number e raised to the power")
+  (pow [base power] "(pow base power) is base raised to the power"))
+(extend-protocol Exponent
+  Number
+    (exp [power] (Math/exp power))
+    (pow [base power] (Math/pow base power)))
 
-(defn log10
-  "(log10 n) is the base 10 logarithm of n"
-  [n]
-  {:pre [(number? n)]}
-  (Math/log10 n))
+(defprotocol Root
+  (root [index radicand] "(root index radicand) is the index-th root of radicand")
+  (sqrt [radicand] "(sqrt radicand) is square root of radicand"))
+(extend-protocol Root
+  Number
+    (root [index radicand] (Math/pow radicand (/ 1.0 index)))
+    (sqrt [radicand] (Math/sqrt radicand)))
 
-(defn log1p
-  "(log1p n) is the natural logarithm of n + 1"
-  [n]
-  {:pre [(number? n)]}
-  (Math/log1p n))
-
-(defn exp
-  "(exp n) is Euler's number e raised to the power"
-  [power]
-  {:pre [(number? power)]}
-  (Math/exp power))
-
-(defn pow
-  "(pow base power) is base to the power."
-  [base power]
-  {:pre [(number? base)
-         (number? power)]}
-  (Math/pow base power))
-
-(defn root
-  "(root n x) is the n-th root of x"
-  [n x]
-  {:pre [(number? n)
-         (number? x)]}
-  (long (Math/pow x (/ 1.0 n))))
-
-(defn acos
-  "(acos n) is the arc cosine of n"
-  [n]
-  {:pre [(number? n)]}
-  (Math/acos n))
-
-(defn asin
-  "(asin n) is the arc sine of n"
-  [n]
-  {:pre [(number? n)]}
-  (Math/asin n))
-
-(defn atan
-  "(atan n) is the arc tangent of n"
-  [n]
-  {:pre [(number? n)]}
-  (Math/atan n))
-
-(defn cos
-  "(cos n) is the trigonometric cosine of n"
-  [n]
-  {:pre [(number? n)]}
-  (Math/cos n))
-
-(defn sin
-  "(sin n) is the trigonometric sine of n"
-  [n]
-  {:pre [(number? n)]}
-  (Math/sin n))
-
-(defn tan
-  "(tan n) is the trigonometric tangent of n"
-  [n]
-  {:pre [(number? n)]}
-  (Math/tan n))
+(defprotocol Trigonometric
+  (sin [x] "(sin x) is the sine of x")
+  (cos [x] "(cos x) is the cosine of x")
+  (tan [x] "(tan x) is the tangent of x")
+  (asin [x] "(asin x) is the arc sine of x")
+  (acos [x] "(acos x) is the arc cosine of x")
+  (atan [x] "(atan x) is the arc tangent of x"))
+(extend-protocol Trigonometric
+  Number
+    (sin [x] (Math/sin x))
+    (cos [x] (Math/cos x))
+    (tan [x] (Math/tan x))
+    (asin [x] (Math/asin x))
+    (acos [x] (Math/acos x))
+    (atan [x] (Math/atan x)))

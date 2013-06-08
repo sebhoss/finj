@@ -15,8 +15,8 @@
   (* 100 (dec (root period (/ future-value present-value)))))
 
 (defn period [& {:keys [future-value present-value rate]}]
-  (/ (- (log future-value) (log present-value))
-     (log (inc rate))))
+  (/ (- (ln future-value) (ln present-value))
+     (ln (inc rate))))
 
 (defn mixed-value [& {:keys [present-value rate start-part period end-part]}]
   (* present-value (inc (* rate start-part))
@@ -36,10 +36,10 @@
   (dec (pow (inc relative-in-year-rate) in-year-period)))
 
 (defn continuous-value [& {:keys [present-value rate period]}]
-  (* present-value (pow e (* rate period))))
+  (* present-value (exp (* rate period))))
 
 (defn intensity [& {:keys [rate]}]
-  (log (inc rate)))
+  (ln (inc rate)))
 
 (defn rate [& {:keys [intensity]}]
-  (dec (pow e intensity)))
+  (dec (exp intensity)))
