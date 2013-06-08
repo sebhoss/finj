@@ -119,9 +119,9 @@
     (sqrt [radicand] (Math/sqrt radicand)))
 
 (defprotocol Trigonometric
-  (sin [x] "(sin x) is the sine of x")
-  (cos [x] "(cos x) is the cosine of x")
-  (tan [x] "(tan x) is the tangent of x")
+  (sin [x] "(sin x) is the trigonometric sine of x")
+  (cos [x] "(cos x) is the trigonometric cosine of x")
+  (tan [x] "(tan x) is the trigonometric tangent of x")
   (asin [x] "(asin x) is the arc sine of x")
   (acos [x] "(acos x) is the arc cosine of x")
   (atan [x] "(atan x) is the arc tangent of x"))
@@ -133,3 +133,13 @@
     (asin [x] (Math/asin x))
     (acos [x] (Math/acos x))
     (atan [x] (Math/atan x)))
+
+(defprotocol Hyperbolic
+  (sinh [x] "(sinh x) is the hyperbolic sine of x")
+  (cosh [x] "(cosh x) is the hyperbolic cosine of x")
+  (tanh [x] "(tanh x) is the hyperbolic tangent of x"))
+(extend-protocol Hyperbolic
+  Number
+    (sinh [x] (Math/sinh x))
+    (cosh [x] (Math/cosh x))
+    (tanh [x] (Math/tanh x)))
