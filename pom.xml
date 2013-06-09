@@ -2,10 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.sebhoss</groupId>
   <artifactId>finj</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>clojure</packaging>
   <name>finj</name>
-  <description>finance library written in clojure.</description>
+  <description>Finance library written in Clojure.</description>
 
   <dependencies>
     <dependency>

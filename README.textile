@@ -1,0 +1,124 @@
+h1. finj
+
+p. finj is a Clojure library for financial computations.
+
+
+h2. Usage
+
+p. The library is divided into the following namespaces and functions: 
+
+h3. benefit/
+
+* @accumulation-factor@ _:rate_
+* @final-due-value@ _:payment :accumulation-factor :period_
+* @final-immediate-value@ _:payment :accumulation-factor :period_
+* @present-due-value@ _:payment :accumulation-factor :period_
+* @present-immediate-value@  _:payment :accumulation-factor :period_
+* @perpetuity-due-value@ _:payment :accumulation-factor_
+* @perpetuity-immediate-value@  _:payment :accumulation-factor_
+* @period@ _:payment :accumulation-factor :final-immediate-value :present-immediate-value_
+
+h3. compound-interest/
+
+* @amount@ _:present-value :rate :period_
+* @future-value@ _:present-value :rate :period_
+* @present-value@ _:future-value :rate :period_
+* @yield@ _:future-value :present-value :period_
+* @period@ _:future-value :present-value :rate_
+* @mixed-value@ _:present-value :rate :start-part :period :end-part_
+* @in-year-value@ _:present-value :rate :period :in-year-period_
+* @relative-in-year-rate@ _:rate :in-year-period_
+* @conformal-in-year-rate@ _:rate :in-year-period_
+* @effective-in-year-rate@ _:relative-in-year-rate :in-year-period_
+* @continuous-value@ _:present-value :rate :period_
+* @intensity@ _:rate_
+* @rate@ _:intensity_
+
+h3. exchange-rate/
+
+* @market-price@ _:real-capital :nominal-capital :nominal-rate :accumulation-factor :effective-accumulation-factor :period :real-benefit :nominal-benefit :nominal-rate :real-rate :agio_
+* @real-rate@ _:market-price :nominal-rate :agio :period_
+
+h3. interest/
+
+* @amount@ _:present-value :rate :period_
+* @future-value@ _:present-value :rate :period_
+* @present-value@ _:future-value :rate :period_
+* @rate@ _:future-value :present-value :period_
+* @period@ _:future-value :present-value :rate_
+* @day@ _:future-value :present-value :rate :days-per-year_
+
+h3. math/
+
+p. Wrappers around various math functions from JDK/Math and Guava/Math. Includes: @e@, @Pi@,  @mean@, @abs@, @gcd@, @lcm@, @floor@, @ceil@, @round@, @sgn@, @signum@, @sgn-eq?@, @sgn-different?@, @log2@, @ln@, @log10@, @exp@, @pow@, @sqrt@, @root@, @sin@, @cos@, @tan@, @asin@, @acos@, @atan@, @sinh@, @cosh@, @tanh@
+
+h3. periodic-payment/
+
+* @due-payments@ _:amount :rate :period_
+* @immediate-payments@ _:amount :rate :period_
+
+h3. predicate/
+
+* @(not-nil? x)@ - true if x is not nil, false otherwise
+* @(fuzzy-eq? x y epsilon)@ - true if x is within epsilon of y, false otherwise
+* @(fuzzy-zero? x epsilon)@ - true if x is within epsilon of zero
+
+h3. ratio/
+
+* @debt-ratio@ _:total-debt :total-assets_
+* @debt-to-capital-ratio@ _:debt :equity_
+* @debt-to-equity-ratio@ _:debt :equity_
+* @debtor-collection-period@ _:average-debtor :credit-sales :opt-def :days 365_
+* @current-ratio@ _:current-assets :current-liabilities_
+* @capital-adequacy-ratio@ _:tier-1-capital :tier-2-capital :risk-weighted-assets_
+* @capital-recovery-factor@ _:rate :period_
+* @capitalization-rate@ _:income :cost_
+* @equity-ratio@ _:equity :total-assets_
+
+h3. repayment/
+
+* @rate-balance-due@ _:loan :period :repayment-period_
+* @rate-interest-amount@ _:loan :period :repayment-period :rate_
+* @annuity@ _:loan :repayment-period :accumulation-factor_
+* @annuity-amount@ _:loan :annuity :period :repayment-period :accumulation-factor_
+* @annuity-balance-due@ _:loan :annuity :period :accumulation-factor_
+* @annuity-interest-amount@ _:annuity :first-annuity-amount :period :accumulation-factor_
+* @period@ _:loan :annuity :accumulation-factor_
+
+h3. root-finding/
+
+* @bisect@ _:function :lower-startpoint :upper-startpoint_
+* @secant@ _:function :first :second_
+* @newton@ _:function :derivative :min-denominator :start-value_
+* @regula-falsi@ _:function :lower-startpoint :upper-startpoint_
+
+
+h2. Integration
+
+h3. Maven
+
+bc. 
+  <dependencies>
+    <dependency>
+      <groupId>com.github.sebhoss</groupId>
+      <artifactId>finj</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+  
+
+h2. Development
+
+h3. License
+
+p. This program is free software. It comes without any warranty, to the extent permitted by applicable law. You can redistribute it and/or modify it under the terms of the Do What The Fuck You Want To Public License, Version 2, as published by Sam Hocevar. See "http://www.wtfpl.net/":http://www.wtfpl.net/ for more details.
+
+h3. Setup
+
+p. This project is using "Clojure":http://clojure.org/, "Maven":http://maven.apache.org/, "Eclipse":http://eclipse.org/ and "Git":http://git-scm.com/ as the main development tools. To build the project yourself just download & install at least Clojure 1.5 & Maven 3.0 and call *mvn install* inside the project folder. Maven should then proceed to clean, build, test, package and install this project.
+
+p. Use the project import wizard from Eclipse to import this project. The integrated m2e-plugin will automatically setup the needed configuration files for Eclipse. If you are using an old version of Eclipse run *mvn eclipse:eclipse* first and then import this project into Eclipse.
+
+h3. Versioning
+
+p. This project follows the "semantic versioning":http://semver.org/ guidelines.
