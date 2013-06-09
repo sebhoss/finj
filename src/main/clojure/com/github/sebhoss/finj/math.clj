@@ -71,7 +71,7 @@
   (sgn [x] "(sgn x) returns '+' for positive, '-' for negative numbers and an empty string for zero")
   (signum [x] "(signum x) returns 1 for positive, -1 for negative numbers and 0 for zero")
   (sgn-eq? [x y] "(sgn-eq? x y) returns true if both x and y share the same sign")
-  (sgn-opposite? [x y] "(sgn-opposite? x y) returns true if x and y do not share the same sign"))
+  (sgn-different? [x y] "(sgn-different? x y) returns true if x and y do not share the same sign"))
 (extend-protocol Sign
   Number
     (sgn [x]
@@ -86,7 +86,7 @@
         :else 0))
     (sgn-eq? [x y]
       (= (sgn x) (sgn y)))
-    (sgn-opposite? [x y]
+    (sgn-different? [x y]
       (not (sgn-eq? x y))))
 
 (defprotocol Logarithm

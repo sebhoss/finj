@@ -34,15 +34,15 @@
   (testing "with zeros"
     (is (sgn-eq? 0 0))))
 
-(deftest sgn-opposite?-test
+(deftest sgn-different?-test
   (testing "with equal signed integers"
-    (is (not (sgn-opposite? 1 2)))
-    (is (not (sgn-opposite? -1 -2))))
+    (is (not (sgn-different? 1 2)))
+    (is (not (sgn-different? -1 -2))))
   (testing "with opposite signed integers"
-    (is (sgn-opposite? 1 -2))
-    (is (sgn-opposite? -1 2))
-    (is (sgn-opposite? 0 -2))
-    (is (sgn-opposite? 1 0))))
+    (is (sgn-different? 1 -2))
+    (is (sgn-different? -1 2))
+    (is (sgn-different? 0 -2))
+    (is (sgn-different? 1 0))))
 
 (deftest abs-test
   (testing "with positive integers"

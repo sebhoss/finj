@@ -43,7 +43,7 @@
      * http://en.wikipedia.org/wiki/Bisection_method"
   [& {:keys [function lower-startpoint upper-startpoint tolerance max-iterations]}]
   {:pre [(< lower-startpoint upper-startpoint)
-         (sgn-opposite? (function lower-startpoint) (function upper-startpoint))]
+         (sgn-different? (function lower-startpoint) (function upper-startpoint))]
    :post [(< (:first-value %) (:second-value %))]}
   (iter-root-search
     :function function
@@ -117,7 +117,7 @@
      * http://en.wikipedia.org/wiki/False_position_method"
   [& {:keys [function lower-startpoint upper-startpoint tolerance max-iterations]}]
   {:pre [(< lower-startpoint upper-startpoint)
-         (sgn-opposite? (function lower-startpoint) (function upper-startpoint))]
+         (sgn-different? (function lower-startpoint) (function upper-startpoint))]
    :post [(< (:first-value %) (:second-value %))]}
   (iter-root-search
     :function function

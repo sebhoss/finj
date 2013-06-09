@@ -1,45 +1,50 @@
 (ns com.github.sebhoss.finj.compound-interest
-  (:require [com.github.sebhoss.finj.math :refer :all]))
+  (:require [com.github.sebhoss.finj.math :refer :all]
+            [com.github.sebhoss.finj.zombie :refer :all]))
 
-(defn future-value [& {:keys [present-value rate period]}]
+(defnk future-value [:present-value :rate :period]
   (* present-value (pow (inc rate) period)))
 
-(defn amount [& {:keys [present-value rate period]}]
-  (- (future-value :present-value present-value :rate rate :period period) present-value))
+(defnk amount [:present-value :rate :period]
+  (- (future-value
+       :present-value present-value
+       :rate rate
+       :period period)
+     present-value))
 
-(defn present-value [& {:keys [future-value rate period]}]
+(defnk present-value [:future-value :rate :period]
   (/ future-value
      (pow (inc rate) period)))
 
-(defn yield [& {:keys [future-value present-value period]}]
+(defnk yield [:future-value :present-value :period]
   (* 100 (dec (root period (/ future-value present-value)))))
 
-(defn period [& {:keys [future-value present-value rate]}]
+(defnk period [:future-value :present-value :rate]
   (/ (- (ln future-value) (ln present-value))
      (ln (inc rate))))
 
-(defn mixed-value [& {:keys [present-value rate start-part period end-part]}]
+(defnk mixed-value [:present-value :rate :start-part :period :end-part]
   (* present-value (inc (* rate start-part))
                    (pow (inc rate) period)
                    (inc (* rate end-part))))
 
-(defn in-year-value [& {:keys [present-value rate period in-year-period]}]
+(defnk in-year-value [:present-value :rate :period :in-year-period]
   (* present-value (pow (inc (/ rate in-year-period)) (* period in-year-period))))
 
-(defn relative-in-year-rate [& {:keys [rate in-year-period]}]
+(defnk relative-in-year-rate [:rate :in-year-period]
   (/ rate in-year-period))
 
-(defn conformal-in-year-rate [& {:keys [rate in-year-period]}]
+(defnk conformal-in-year-rate [:rate :in-year-period]
   (dec (root in-year-period (inc rate))))
 
-(defn effective-in-year-rate [& {:keys [relative-in-year-rate in-year-period]}]
+(defnk effective-in-year-rate [:relative-in-year-rate :in-year-period]
   (dec (pow (inc relative-in-year-rate) in-year-period)))
 
-(defn continuous-value [& {:keys [present-value rate period]}]
+(defnk continuous-value [:present-value :rate :period]
   (* present-value (exp (* rate period))))
 
-(defn intensity [& {:keys [rate]}]
+(defnk intensity [:rate]
   (ln (inc rate)))
 
-(defn rate [& {:keys [intensity]}]
+(defnk rate [:intensity]
   (dec (exp intensity)))

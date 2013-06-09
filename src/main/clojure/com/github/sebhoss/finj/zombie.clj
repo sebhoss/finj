@@ -52,10 +52,19 @@
         ks-as-symbols                    (map #(symbol (name %)) all-ks)
         check-ks-precond                 `{:pre [(contains-keys? ~'m ~(vec obligatory))
                                                  (every? #(some #{%} ~(vec all-ks)) (keys ~'m))]}] 
-    `(defn 
-       ~(with-meta fn-name {:doc docstring}) 
+    `(defn
+       ~(with-meta fn-name {:doc docstring})
        [& {:keys [~@ks-as-symbols] :or ~sym-vals :as ~'m}]
-       ~(merge-with #(vec (concat %1 %2)) 
-          check-ks-precond 
+       ~(merge-with #(vec (concat %1 %2))
+          check-ks-precond
           condition-map)
        ~@body)))
+
+(defmacro filter-map [bindings pred m]
+  `(select-keys ~m
+    (for [~bindings ~m
+      :when ~pred]
+      ~(first bindings))))
+; user=> (filter-map [key val] (even? (:attr val)) {:a {:attr 2} :b {:attr 3} :c {:attr 4}})
+; {:c {:attr 4}, :a {:attr 2}}
+; from http://stackoverflow.com/questions/2753874/how-to-filter-a-persistent-map-in-clojure
