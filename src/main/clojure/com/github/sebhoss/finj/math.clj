@@ -100,19 +100,19 @@
     (log10 [x] (Math/log10 x)))
 
 (defprotocol Exponent
-  (exp [power] "(exp n) is Euler's number e raised to the power")
-  (pow [base power] "(pow base power) is base raised to the power"))
+  (exp [exponent] "(exp exponent) is Euler's number e raised to the power of exponent")
+  (pow [base exponent] "(pow base exponent) is base raised to the power of exponent"))
 (extend-protocol Exponent
   Number
-    (exp [power] (Math/exp power))
-    (pow [base power] (Math/pow base power)))
+    (exp [exponent] (Math/exp exponent))
+    (pow [base exponent] (Math/pow base exponent)))
 
 (defprotocol Root
-  (root [index radicand] "(root index radicand) is the index-th root of radicand")
+  (root [degree radicand] "(root degree radicand) is the degree-th root of radicand")
   (sqrt [radicand] "(sqrt radicand) is square root of radicand"))
 (extend-protocol Root
   Number
-    (root [index radicand] (Math/pow radicand (/ 1.0 index)))
+    (root [degree radicand] (Math/pow radicand (/ 1.0 degree)))
     (sqrt [radicand] (Math/sqrt radicand)))
 
 (defprotocol Trigonometric
