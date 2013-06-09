@@ -66,28 +66,12 @@
     (is (= 2 (mean -1 5)))
     (is (= -3 (mean 1 -7)))))
 
-(deftest fuzzy-eq?-test
-  (testing "with positive integers"
-    (is (fuzzy-eq? 1 2 3)))
-  (testing "with negative integers"
-    (is (fuzzy-eq? -1 -2 3)))
-  (testing "with zero"
-    (is (fuzzy-eq? 0 0 1))))
-
-(deftest fuzzy-zero?-test
-  (testing "with positive integers"
-    (is (fuzzy-zero? 1 2)))
-  (testing "with negative integers"
-    (is (fuzzy-zero? -1 2)))
-  (testing "with zero"
-    (is (fuzzy-zero? 0 2))))
-
 (deftest gcd-test
   (testing "with positive integers"
     (is (= 5 (gcd 10 5))))
   (testing "with negative integers"
-    (is (= 5 (gcd 10 -5)))
-    (is (= 5 (gcd -10 5))))
+    (is (thrown? IllegalArgumentException (gcd 10 -5)))
+    (is (thrown? IllegalArgumentException (gcd -10 5))))
   (testing "with zeros"
     (is (= 10 (gcd 10 0)))))
 
@@ -95,8 +79,8 @@
   (testing "with positive integers"
     (is (= 10 (lcm 10 5))))
   (testing "with negative integers"
-    (is (= 10 (lcm 10 -5)))
-    (is (= 10 (lcm -10 5))))
+    (is (thrown? IllegalArgumentException (lcm 10 -5)))
+    (is (thrown? IllegalArgumentException (lcm -10 5))))
   (testing "with zeros"
     (is (= 0 (lcm 10 0)))))
 

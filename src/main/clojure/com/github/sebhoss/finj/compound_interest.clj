@@ -1,6 +1,6 @@
 (ns com.github.sebhoss.finj.compound-interest
   (:require [com.github.sebhoss.finj.math :refer :all]
-            [com.github.sebhoss.finj.zombie :refer :all]))
+            [com.github.sebhoss.finj.def :refer :all]))
 
 (defnk future-value [:present-value :rate :period]
   (* present-value (pow (inc rate) period)))

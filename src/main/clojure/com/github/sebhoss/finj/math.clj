@@ -1,6 +1,6 @@
 (ns com.github.sebhoss.finj.math
   "Misc math functions"
-  (:import (com.google.common.math DoubleMath)))
+  (:import (com.google.common.math IntMath LongMath DoubleMath)))
 
 (def ^:const e
   "e is the double value that is closer than any other to e, the base of the natural logarithms."
@@ -11,51 +11,40 @@
    diameter."
   (Math/PI))
 
-(defn mean
-  "(mean x y) is the mean value of x and y"
-  [x y]
-  {:pre [(number? x)
-         (number? y)]}
-  (/ (+ x y) 2))
-
-(defn abs
-  "(abs x) is the absolute value of x"
-  [x]
-  {:pre [(number? x)]}
-  (if (neg? x)
-    (- x)
-    x))
-
-(defn gcd
-  "(gcd x y) returns the greatest common divisor of x and y"
-  [x y]
-  {:pre [(integer? x)
-         (integer? y)]}
-  (loop [x (abs x)
-         y (abs y)]
-    (if (zero? y)
-      x
-      (recur y (mod x y)))))
-
-(defn lcm
-  "(lcm x y) returns the least common multiple of x and y"
-  [x y]
-  {:pre [(integer? x)
-         (integer? y)]}
-  (cond
-    (zero? x) 0
-    (zero? y) 0
-    :else (abs (* y (/ x (gcd x y))))))
-
-(defprotocol Fuzzy
-  (fuzzy-eq? [x y epsilon] "(fuzzy? x y epsilon) returns true if the difference between x and y is less than epsilon")
-  (fuzzy-zero? [x epsilon] "(fuzzy-zero? x epsilon) returns true if x is within epsilon of zero"))
-(extend-protocol Fuzzy
+(defprotocol MEAN
+  (mean [x y] "(mean x y) is the mean value of x and y"))
+(extend-protocol MEAN
+  Integer
+    (mean [x y] (IntMath/mean x y))
+  Long
+    (mean [x y] (LongMath/mean x y))
   Number
-    (fuzzy-eq? [x y epsilon]
-      (< (abs (- x y)) epsilon))
-    (fuzzy-zero? [x epsilon]
-      (fuzzy-eq? x 0 epsilon)))
+    (mean [x y] (/ (+ x y) 2)))
+
+(defprotocol ABS
+  (abs [x] "(abs x) is the absolute value of x"))
+(extend-protocol ABS
+  Number
+    (abs [x] (if (neg? x) (- x) x)))
+
+(defprotocol GCD
+  (gcd [x y] "(gcd x y) returns the greatest common divisor of x and y"))
+(extend-protocol GCD
+  Integer
+    (gcd [x y] (IntMath/gcd x y))
+  Long
+    (gcd [x y] (LongMath/gcd x y))
+  BigInteger
+    (gcd [x y] (.gcd x y)))
+
+(defprotocol LCM
+  (lcm [x y] "(lcm x y) returns the least common multiple of x and y"))
+(extend-protocol LCM
+  Number
+    (lcm [x y] (cond
+                 (zero? x) 0
+                 (zero? y) 0
+                 :else (abs (* y (/ x (gcd x y)))))))
 
 (defprotocol Rounding
   (floor [x] "(floor x) is n rounded down")

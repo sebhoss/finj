@@ -1,6 +1,7 @@
 (ns com.github.sebhoss.finj.benefit-test
   (:require [com.github.sebhoss.finj.benefit :refer :all]
             [com.github.sebhoss.finj.math :refer :all]
+            [com.github.sebhoss.finj.predicate :refer :all]
             [clojure.test :refer :all]))
 
 (deftest accumulation-factor-test
