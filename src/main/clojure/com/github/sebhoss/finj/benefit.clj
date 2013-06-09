@@ -1,41 +1,43 @@
 (ns com.github.sebhoss.finj.benefit
-  (:require [com.github.sebhoss.finj.math :refer :all]))
+  (:require [com.github.sebhoss.finj.math :refer :all]
+            [com.github.sebhoss.finj.zombie :refer :all]))
 
-(defn accumulation-factor [& {:keys [rate]}]
+(defnk accumulation-factor [:rate]
   (inc rate))
 
-(defn final-due-value [& {:keys [payment accumulation-factor period]}]
+(defnk final-due-value [:payment :accumulation-factor :period]
   (* payment accumulation-factor
      (/ (dec (pow accumulation-factor period))
         (dec accumulation-factor))))
 
-(defn final-immediate-value [& {:keys [payment accumulation-factor period]}]
+(defnk final-immediate-value [:payment :accumulation-factor :period]
   (* payment
      (/ (dec (pow accumulation-factor period))
         (dec accumulation-factor))))
 
-(defn present-due-value [& {:keys [payment accumulation-factor period]}]
+(defnk present-due-value [:payment :accumulation-factor :period]
   (* (/ payment
         (pow accumulation-factor (dec period)))
      (/ (dec (pow accumulation-factor period))
         (dec accumulation-factor))))
 
-(defn present-immediate-value [& {:keys [payment accumulation-factor period]}]
+(defnk present-immediate-value [:payment :accumulation-factor :period]
   (* (/ payment
         (pow accumulation-factor period))
      (/ (dec (pow accumulation-factor period))
         (dec accumulation-factor))))
 
-(defn perpetuity-due-value [& {:keys [payment accumulation-factor]}]
+(defnk perpetuity-due-value [:payment :accumulation-factor]
   (/ (* payment accumulation-factor)
      (dec accumulation-factor)))
 
-(defn perpetuity-immediate-value [& {:keys [payment accumulation-factor]}]
+(defnk perpetuity-immediate-value [:payment :accumulation-factor]
   (/ payment (dec accumulation-factor)))
 
-(defn period [& {:keys [payment accumulation-factor final-immediate-value present-immediate-value]
-                 :or {final-immediate-value nil
-                      present-immediate-value nil}}]
+(defnk period [:payment
+               :accumulation-factor
+               :opt :final-immediate-value
+                    :present-immediate-value]
   {:pre [(or (not-nil? final-immediate-value)
              (not-nil? present-immediate-value))]}
   (if (nil? final-immediate-value)

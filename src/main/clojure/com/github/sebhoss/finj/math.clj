@@ -1,7 +1,6 @@
 (ns com.github.sebhoss.finj.math
   "Misc math functions"
-  (:import (com.google.common.math IntMath LongMath BigIntegerMath DoubleMath))
-  (:import (java.math RoundingMode)))
+  (:import (com.google.common.math DoubleMath)))
 
 (def ^:const e
   "e is the double value that is closer than any other to e, the base of the natural logarithms."
@@ -11,8 +10,6 @@
   "pi is the double value that is closer than any other to pi, the ratio of the circumference of a circle to its
    diameter."
   (Math/PI))
-
-(def not-nil? (comp not nil?))
 
 (defn mean
   "(mean x y) is the mean value of x and y"
