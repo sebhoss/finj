@@ -153,3 +153,21 @@
     (is (float? (log10 (float 1)))))
   (testing "with double"
     (is (float? (log10 (double 1))))))
+
+(deftest pow-test
+  (testing "with positive integers"
+    (is (float? (pow 2 10))))
+  (testing "with negative integers"
+    (is (float? (pow -2 2)))
+    (is (float? (pow 2 -2))))
+  (testing "with zero"
+    (is (float? (pow 2 0)))
+    (is (float? (pow 0 2)))))
+
+(deftest exp-test
+  (testing "with positive integers"
+    (is (float? (exp 2))))
+  (testing "with negative integers"
+    (is (float? (exp -2))))
+  (testing "with zero"
+    (is (float? (exp 0)))))
