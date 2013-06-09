@@ -47,9 +47,9 @@
                  :else (abs (* y (/ x (gcd x y)))))))
 
 (defprotocol Rounding
-  (floor [x] "(floor x) is n rounded down")
-  (ceil [x] "(ceil x) is n rounded up")
-  (round [x] "(round x) is n rounded to the nearest integer"))
+  (floor [x] "(floor x) is x rounded down")
+  (ceil [x] "(ceil x) is x rounded up")
+  (round [x] "(round x) is x rounded to the nearest integer"))
 (extend-protocol Rounding
   Number
     (floor [x] (Math/floor x))
