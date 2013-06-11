@@ -9,7 +9,6 @@ p. The library is divided into the following namespaces and functions:
 
 h3. benefit/
 
-* @accumulation-factor@ _:rate_
 * @final-due-value@ _:payment :accumulation-factor :period_
 * @final-immediate-value@ _:payment :accumulation-factor :period_
 * @present-due-value@ _:payment :accumulation-factor :period_
@@ -17,6 +16,11 @@ h3. benefit/
 * @perpetuity-due-value@ _:payment :accumulation-factor_
 * @perpetuity-immediate-value@  _:payment :accumulation-factor_
 * @period@ _:payment :accumulation-factor :final-immediate-value :present-immediate-value_
+
+h3. common/
+
+* @rate@ _:rate-per-cent_
+* @accumulation-factor@ _:rate_
 
 h3. compound-interest/
 
