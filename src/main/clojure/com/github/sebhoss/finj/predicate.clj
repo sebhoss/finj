@@ -3,12 +3,24 @@
 
 (def not-nil? (comp not nil?))
 
-(defprotocol Fuzzy
-  (fuzzy-eq? [x y epsilon] "(fuzzy-eq? x y epsilon) returns true if the difference between x and y is less than epsilon")
-  (fuzzy-zero? [x epsilon] "(fuzzy-zero? x epsilon) returns true if x is within epsilon of zero"))
-(extend-protocol Fuzzy
-  Number
-    (fuzzy-eq? [x y epsilon]
-      (< (abs (- x y)) epsilon))
-    (fuzzy-zero? [x epsilon]
-      (fuzzy-eq? x 0 epsilon)))
+(defn ≈
+  "(≈ x y epsilon) returns true if the difference between x and y is less than epsilon"
+  ([x y]
+    {:pre [(number? x)
+           (number? y)]}
+    (≈ x y 1))
+  ([x y epsilon]
+    {:pre [(number? x)
+           (number? y)
+           (number? epsilon)]}
+    (< (abs (- x y)) epsilon)))
+
+(defn ≈0
+  "(≈0 x epsilon) returns true if x is within epsilon of zero"
+  ([x]
+    {:pre [(number? x)]}
+    (≈0 x 1))
+  ([x epsilon]
+    {:pre [(number? x)
+           (number? epsilon)]}
+    (≈ x 0 epsilon)))

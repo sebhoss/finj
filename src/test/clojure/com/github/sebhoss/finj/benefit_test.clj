@@ -14,11 +14,11 @@
 
 (deftest final-due-value-test
   (testing "with fuzzy results"
-    (is (fuzzy-eq? 110 (final-due-value
+    (is (≈ 110 (final-due-value
                          :payment 100
                          :accumulation-factor 1.1
                          :period 1) 0.00001))
-    (is (fuzzy-eq? 231 (final-due-value
+    (is (≈ 231 (final-due-value
                          :payment 100
                          :accumulation-factor 1.1
                          :period 2) 0.00001))))

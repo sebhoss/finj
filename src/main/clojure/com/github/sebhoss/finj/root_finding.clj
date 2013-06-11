@@ -41,7 +41,9 @@
 
    References:
      * http://en.wikipedia.org/wiki/Bisection_method"
-  [& {:keys [function lower-startpoint upper-startpoint tolerance max-iterations]}]
+  [& {:keys [function lower-startpoint upper-startpoint tolerance max-iterations]
+      :or {tolerance 0.00001
+           max-iterations 100}}]
   {:pre [(< lower-startpoint upper-startpoint)
          (sgn-different? (function lower-startpoint) (function upper-startpoint))]
    :post [(< (:first-value %) (:second-value %))]}
@@ -68,7 +70,9 @@
 
    References:
      * http://en.wikipedia.org/wiki/Secant_method"
-  [& {:keys [function first second tolerance max-iterations]}]
+  [& {:keys [function first second tolerance max-iterations]
+      :or {tolerance 0.00001
+           max-iterations 100}}]
   (iter-root-search
     :function function
     :first-value first
@@ -92,7 +96,9 @@
 
    References:
      * http://en.wikipedia.org/wiki/Newton%27s_method"
-  [& {:keys [function derivative min-denominator start-value tolerance max-iterations]}]
+  [& {:keys [function derivative min-denominator start-value tolerance max-iterations]
+      :or {tolerance 0.00001
+           max-iterations 100}}]
   (iter-root-search 
     :function function
     :first-value start-value
@@ -115,7 +121,9 @@
 
    References:
      * http://en.wikipedia.org/wiki/False_position_method"
-  [& {:keys [function lower-startpoint upper-startpoint tolerance max-iterations]}]
+  [& {:keys [function lower-startpoint upper-startpoint tolerance max-iterations]
+      :or {tolerance 0.00001
+           max-iterations 100}}]
   {:pre [(< lower-startpoint upper-startpoint)
          (sgn-different? (function lower-startpoint) (function upper-startpoint))]
    :post [(< (:first-value %) (:second-value %))]}
