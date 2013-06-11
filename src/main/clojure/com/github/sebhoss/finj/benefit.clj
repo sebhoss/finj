@@ -1,10 +1,8 @@
 (ns com.github.sebhoss.finj.benefit
   (:require [com.github.sebhoss.finj.math :refer :all]
             [com.github.sebhoss.finj.def :refer :all]
+            [com.github.sebhoss.finj.common :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]))
-
-(defnk accumulation-factor [:rate]
-  (inc rate))
 
 (defnk final-due-value [:payment :accumulation-factor :period]
   (* payment accumulation-factor

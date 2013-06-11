@@ -1,16 +1,7 @@
 (ns com.github.sebhoss.finj.benefit-test
   (:require [com.github.sebhoss.finj.benefit :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]
             [clojure.test :refer :all]))
-
-(deftest accumulation-factor-test
-  (testing "with integers"
-    (is (= 2 (accumulation-factor :rate 1))))
-  (testing "with floats"
-    (is (= 2.0 (accumulation-factor :rate 1.0))))
-  (testing "with ratios"
-    (is (= 5/4 (accumulation-factor :rate 1/4)))))
 
 (deftest final-due-value-test
   (testing "with fuzzy results"

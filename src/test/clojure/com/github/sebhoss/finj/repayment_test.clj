@@ -1,6 +1,5 @@
 (ns com.github.sebhoss.finj.repayment-test
   (:require [com.github.sebhoss.finj.repayment :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]
             [clojure.test :refer :all]))
 

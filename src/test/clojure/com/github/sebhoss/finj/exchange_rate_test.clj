@@ -1,6 +1,5 @@
 (ns com.github.sebhoss.finj.exchange-rate-test
   (:require [com.github.sebhoss.finj.exchange-rate :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]
             [clojure.test :refer :all]))
 

@@ -1,6 +1,5 @@
 (ns com.github.sebhoss.finj.interest-test
   (:require [com.github.sebhoss.finj.interest :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]
             [clojure.test :refer :all]))
 

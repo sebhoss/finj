@@ -1,6 +1,5 @@
 (ns com.github.sebhoss.finj.compound-interest-test
   (:require [com.github.sebhoss.finj.compound-interest :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]
             [clojure.test :refer :all]))
 
