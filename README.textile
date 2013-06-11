@@ -48,6 +48,11 @@ h3. interest/
 * @period@ _:future-value :present-value :rate_
 * @day@ _:future-value :present-value :rate :days-per-year_
 
+h3. investment/
+
+* @net-present-value@ _:rate :cashflows_
+* @adjusted-present-value@ _:value-without-liabilities :borrowed-capital :rate :risk-free-rate_
+
 h3. math/
 
 p. Wrappers around various math functions from JDK/Math and Guava/Math. Includes: @e@, @Pi@,  @mean@, @abs@, @gcd@, @lcm@, @floor@, @ceil@, @round@, @sgn@, @signum@, @sgn-eq?@, @sgn-different?@, @log2@, @ln@, @log10@, @exp@, @pow@, @sqrt@, @root@, @sin@, @cos@, @tan@, @asin@, @acos@, @atan@, @sinh@, @cosh@, @tanh@
