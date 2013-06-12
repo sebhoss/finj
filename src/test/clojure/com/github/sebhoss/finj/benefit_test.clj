@@ -24,3 +24,36 @@
                    :payment 100
                    :accumulation-factor 1.1
                    :period 2)))))
+
+(deftest present-due-value-test
+  (testing "with positive values"
+    (is (≈ 190 (present-due-value
+                 :payment 100
+                 :accumulation-factor 1.1
+                 :period 2)))))
+
+(deftest present-immediate-value-test
+  (testing "with positive values"
+    (is (≈ 173 (present-immediate-value
+                 :payment 100
+                 :accumulation-factor 1.1
+                 :period 2)))))
+
+(deftest perpetuity-due-value-test
+  (testing "with positive values"
+    (is (≈ 1100 (perpetuity-due-value
+                  :payment 100
+                  :accumulation-factor 1.1)))))
+
+(deftest perpetuity-immediate-value-test
+  (testing "with positive values"
+    (is (≈ 1000 (perpetuity-immediate-value
+                  :payment 100
+                  :accumulation-factor 1.1)))))
+
+(deftest period-test
+  (testing "with positive values"
+    (is (= 2.0 (period
+                 :payment 100
+                 :accumulation-factor 1.1
+                 :final-immediate-value 210)))))
