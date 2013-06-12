@@ -7,24 +7,24 @@
   (testing "with positive values"
     (is (≈ 250 (amount :present-value 500 :rate 0.10 :period 5)))))
 
-(deftest future-value-test
+(deftest final-value-test
   (testing "with positive values"
-    (is (≈ 750 (future-value :present-value 500 :rate 0.10 :period 5)))))
+    (is (≈ 750 (final-value :present-value 500 :rate 0.10 :period 5)))))
 
 (deftest present-value-test
   (testing "with positive values"
-    (is (≈ 333 (present-value :future-value 500 :rate 0.10 :period 5)))))
+    (is (≈ 333 (present-value :final-value 500 :rate 0.10 :period 5)))))
 
 (deftest rate-test
   (testing "with positive values"
-    (is (≈ 1/10 (rate :present-value 500 :future-value 750 :period 5)))))
+    (is (≈ 1/10 (rate :present-value 500 :final-value 750 :period 5)))))
 
 (deftest period-test
   (testing "with positive values"
-    (is (≈ 5 (period :present-value 500 :rate 0.10 :future-value 750)))))
+    (is (≈ 5 (period :present-value 500 :rate 0.10 :final-value 750)))))
 
-(deftest day-test
+(deftest days-test
   (testing "with positive values"
-    (is (≈ 1800 (day :present-value 500 :future-value 750 :rate 0.10))))
+    (is (≈ 1825 (days :present-value 500 :final-value 750 :rate 0.10))))
   (testing "with custom number of days per year"
-    (is (≈ 1800 (day :present-value 500 :future-value 750 :rate 0.10 :days-per-year 360)))))
+    (is (≈ 1800 (days :present-value 500 :final-value 750 :rate 0.10 :days-per-year 360)))))
