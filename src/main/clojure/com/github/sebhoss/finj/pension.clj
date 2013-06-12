@@ -1,4 +1,4 @@
-(ns com.github.sebhoss.finj.benefit
+(ns com.github.sebhoss.finj.pension
   (:require [com.github.sebhoss.finj.math :refer :all]
             [com.github.sebhoss.finj.def :refer :all]
             [com.github.sebhoss.finj.common :refer :all]

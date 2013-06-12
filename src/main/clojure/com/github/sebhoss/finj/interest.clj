@@ -16,7 +16,7 @@
      * http://en.wikipedia.org/wiki/Interest"
   (:require [com.github.sebhoss.finj.def :refer :all]))
 
-(defnk amount [:present-value :rate :period]
+(defnk amount
   "Calculates the generated amount of interest for a given investment with a given rate over a given period of time.
 
    Parameters:
@@ -28,12 +28,13 @@
      * (amount :present-value 100 :rate 0.05 :period 5)
      * (amount :present-value 500 :rate 0.1 :period 8)
      * (amount :present-value 800 :rate 0.15 :period 12)"
+  [:present-value :rate :period]
   {:pre [(number? present-value)
          (number? rate)
          (number? period)]}
   (* present-value rate period))
 
-(defnk final-value [:present-value :rate :period]
+(defnk final-value
   "Calculates the final value for a given investment with a given rate over a given period of time.
 
    Parameters:
@@ -45,6 +46,7 @@
      * (final-value :present-value 100 :rate 0.05 :period 5)
      * (final-value :present-value 500 :rate 0.1 :period 8)
      * (final-value :present-value 800 :rate 0.15 :period 12)"
+  [:present-value :rate :period]
   {:pre [(number? present-value)
          (number? rate)
          (number? period)]}
@@ -53,7 +55,7 @@
              :rate rate
              :period period)))
 
-(defnk present-value [:final-value :rate :period]
+(defnk present-value
   "Calculates the present value for a given final value with a given rate over a given period of time.
 
    Parameters:
@@ -65,13 +67,14 @@
      * (present-value :final-value 250 :rate 0.05 :period 5)
      * (present-value :final-value 400 :rate 0.1 :period 8)
      * (present-value :final-value 750 :rate 0.15 :period 12)"
+  [:final-value :rate :period]
   {:pre [(number? final-value)
          (number? rate)
          (number? period)]}
   (/ final-value
      (inc (* rate period))))
 
-(defnk rate [:final-value :present-value :period]
+(defnk rate
   "Calculates the required rate of interest for a given seed capital to reach a given final value within a given
    period of time.
 
@@ -84,13 +87,14 @@
      * (rate :final-value 300 :present-value 150 :period 5)
      * (rate :final-value 500 :present-value 180 :period 8)
      * (rate :final-value 800 :present-value 230 :period 12)"
+  [:final-value :present-value :period]
   {:pre [(number? final-value)
          (number? present-value)
          (number? period)]}
   (/ (- final-value present-value)
      (* present-value period)))
 
-(defnk period [:final-value :present-value :rate]
+(defnk period
   "Calculates the number of periods for a given seed capital to reach a final value with a given rate of interest.
 
    Parameters:
@@ -102,13 +106,14 @@
      * (period :final-value 300 :present-value 150 :rate 0.05)
      * (period :final-value 500 :present-value 180 :rate 0.1)
      * (period :final-value 800 :present-value 230 :rate 0.15)"
+  [:final-value :present-value :rate]
   {:pre [(number? final-value)
          (number? present-value)
          (number? rate)]}
   (/ (- final-value present-value)
      (* present-value rate)))
 
-(defnk days [:final-value :present-value :rate :opt-def :days-per-year 365]
+(defnk days
   "Calculates the number interest days for a given seed capital to reach a final value with a given rate.
 
    Parameters:
@@ -121,6 +126,7 @@
      * (days :final-value 300 :present-value 150 :rate 0.05)
      * (days :final-value 500 :present-value 180 :rate 0.1)
      * (days :final-value 800 :present-value 230 :rate 0.15 :days-per-year 360)"
+  [:final-value :present-value :rate :opt-def :days-per-year 365]
   {:pre [(number? final-value)
          (number? present-value)
          (number? rate)

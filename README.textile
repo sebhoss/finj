@@ -7,16 +7,6 @@ h2. Usage
 
 p. The library is divided into the following namespaces and functions: 
 
-h3. benefit/
-
-* @final-due-value@ _:payment :accumulation-factor :period_
-* @final-immediate-value@ _:payment :accumulation-factor :period_
-* @present-due-value@ _:payment :accumulation-factor :period_
-* @present-immediate-value@  _:payment :accumulation-factor :period_
-* @perpetuity-due-value@ _:payment :accumulation-factor_
-* @perpetuity-immediate-value@  _:payment :accumulation-factor_
-* @period@ _:payment :accumulation-factor :final-immediate-value :present-immediate-value_
-
 h3. common/
 
 * @rate@ _:rate-per-cent_
@@ -25,15 +15,15 @@ h3. common/
 h3. compound-interest/
 
 * @amount@ _:present-value :rate :period_
-* @future-value@ _:present-value :rate :period_
-* @present-value@ _:future-value :rate :period_
-* @yield@ _:future-value :present-value :period_
-* @period@ _:future-value :present-value :rate_
-* @mixed-value@ _:present-value :rate :start-part :period :end-part_
-* @in-year-value@ _:present-value :rate :period :in-year-period_
-* @relative-in-year-rate@ _:rate :in-year-period_
-* @conformal-in-year-rate@ _:rate :in-year-period_
-* @effective-in-year-rate@ _:relative-in-year-rate :in-year-period_
+* @final-value@ _:present-value :rate :period_
+* @present-value@ _:final-value :rate :period_
+* @yield@ _:final-value :present-value :period_
+* @period@ _:final-value :present-value :rate_
+* @actual-value@ _:present-value :rate :start-part :period :end-part_
+* @final-during-value@ _:present-value :rate :period :in-year-period_
+* @relative-during-rate@ _:rate :in-year-period_
+* @conformal-during-rate@ _:rate :in-year-period_
+* @effective-during-rate@ _:relative-in-year-rate :in-year-period_
 * @continuous-value@ _:present-value :rate :period_
 * @intensity@ _:rate_
 * @rate@ _:intensity_
@@ -46,11 +36,11 @@ h3. exchange-rate/
 h3. interest/
 
 * @amount@ _:present-value :rate :period_
-* @future-value@ _:present-value :rate :period_
-* @present-value@ _:future-value :rate :period_
-* @rate@ _:future-value :present-value :period_
-* @period@ _:future-value :present-value :rate_
-* @day@ _:future-value :present-value :rate :days-per-year_
+* @final-value@ _:present-value :rate :period_
+* @present-value@ _:final-value :rate :period_
+* @rate@ _:final-value :present-value :period_
+* @period@ _:final-value :present-value :rate_
+* @day@ _:final-value :present-value :rate :days-per-year_
 
 h3. investment/
 
@@ -60,6 +50,16 @@ h3. investment/
 h3. math/
 
 p. Wrappers around various math functions from JDK/Math and Guava/Math. Includes: @e@, @Pi@,  @mean@, @abs@, @gcd@, @lcm@, @floor@, @ceil@, @round@, @sgn@, @signum@, @sgn-eq?@, @sgn-different?@, @log2@, @ln@, @log10@, @exp@, @pow@, @sqrt@, @root@, @sin@, @cos@, @tan@, @asin@, @acos@, @atan@, @sinh@, @cosh@, @tanh@
+
+h3. pension/
+
+* @final-due-value@ _:payment :accumulation-factor :period_
+* @final-immediate-value@ _:payment :accumulation-factor :period_
+* @present-due-value@ _:payment :accumulation-factor :period_
+* @present-immediate-value@  _:payment :accumulation-factor :period_
+* @perpetuity-due-value@ _:payment :accumulation-factor_
+* @perpetuity-immediate-value@  _:payment :accumulation-factor_
+* @period@ _:payment :accumulation-factor :final-immediate-value :present-immediate-value_
 
 h3. periodic-payment/
 

@@ -1,5 +1,5 @@
-(ns com.github.sebhoss.finj.benefit-test
-  (:require [com.github.sebhoss.finj.benefit :refer :all]
+(ns com.github.sebhoss.finj.pension-test
+  (:require [com.github.sebhoss.finj.pension :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]
             [clojure.test :refer :all]))
 
