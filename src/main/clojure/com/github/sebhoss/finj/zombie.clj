@@ -59,3 +59,10 @@
 
 ;(defnk myfunc [:a :b 5 :c] (+ a b c))
 
+;    // Efficient method for computing the arithmetic mean.
+;    // The alternative (x + y) / 2 fails for large values.
+;    // The alternative (x + y) >>> 1 fails for negative values.
+;    return (x & y) + ((x ^ y) >> 1);
+;(defn mean [x y]
+;  (+ (bit-and x y)
+;     (bit-shift-right (bit-xor x y) 1)))
