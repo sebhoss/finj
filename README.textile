@@ -28,11 +28,6 @@ h3. compound-interest/
 * @intensity@ _:rate_
 * @rate@ _:intensity_
 
-h3. exchange-rate/
-
-* @market-price@ _:real-capital :nominal-capital :nominal-rate :accumulation-factor :effective-accumulation-factor :period :real-benefit :nominal-benefit :nominal-rate :real-rate :agio_
-* @real-rate@ _:market-price :nominal-rate :agio :period_
-
 h3. interest/
 
 * @amount@ _:present-value :rate :period_
@@ -51,7 +46,7 @@ h3. loan/
 
 * @rate-balance-due@ _:loan :period :repayment-period_
 * @rate-interest-amount@ _:loan :period :repayment-period :rate_
-* @annuity@ _:loan :repayment-period :accumulation-factor_
+* @annuity@ _:loan :period :accumulation-factor_
 * @annuity-amount@ _:loan :annuity :period :repayment-period :accumulation-factor_
 * @annuity-balance-due@ _:loan :annuity :period :accumulation-factor_
 * @annuity-interest-amount@ _:annuity :first-annuity-amount :period :accumulation-factor_
@@ -100,6 +95,11 @@ h3. root-finding/
 * @secant@ _:function :first :second_
 * @newton@ _:function :derivative :min-denominator :start-value_
 * @regula-falsi@ _:function :lower-startpoint :upper-startpoint_
+
+h3. share-price/
+
+* @market-price@ _:real-capital :nominal-capital :nominal-rate :accumulation-factor :effective-accumulation-factor :period :real-benefit :nominal-benefit :nominal-rate :real-rate :agio_
+* @real-rate@ _:market-price :nominal-rate :agio :period_
 
 
 h2. Integration

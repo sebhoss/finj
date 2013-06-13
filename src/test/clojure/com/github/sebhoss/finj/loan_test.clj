@@ -1,4 +1,4 @@
-(ns com.github.sebhoss.finj.repayment-test
+(ns com.github.sebhoss.finj.loan-test
   (:require [com.github.sebhoss.finj.loan :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]
             [clojure.test :refer :all]))
@@ -13,7 +13,7 @@
 
 (deftest annuity-test
   (testing "with positive values"
-    (is (≈ 131 (annuity :loan 500 :repayment-period 5 :accumulation-factor 1.1)))))
+    (is (≈ 131 (annuity :loan 500 :period 5 :accumulation-factor 1.1)))))
 
 (deftest annuity-amount-test
   (testing "with positive values"

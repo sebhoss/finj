@@ -1,4 +1,12 @@
 (ns com.github.sebhoss.finj.investment
+  "In finance, investment is putting money into something with the expectation of gain, usually over a longer term.
+   This may or may not be backed by research and analysis. Most or all forms of investment involve some form of risk,
+   such as investment in equities, property, and even fixed interest securities which are subject, inter alia, to
+   inflation risk. or you can express it in short form The act or action of using (money) to make more money out of
+   something that will increase in value.
+
+   References:
+     * http://en.wikipedia.org/wiki/Investment"
   (:require [com.github.sebhoss.finj.def :refer :all]
             [com.github.sebhoss.finj.math :refer :all]))
 

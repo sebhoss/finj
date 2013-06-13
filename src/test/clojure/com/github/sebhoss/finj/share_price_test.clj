@@ -1,5 +1,5 @@
-(ns com.github.sebhoss.finj.exchange-rate-test
-  (:require [com.github.sebhoss.finj.exchange-rate :refer :all]
+(ns com.github.sebhoss.finj.share-price-test
+  (:require [com.github.sebhoss.finj.share-price :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]
             [clojure.test :refer :all]))
 
