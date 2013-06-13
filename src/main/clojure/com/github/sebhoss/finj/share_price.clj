@@ -20,6 +20,15 @@
      * period & effective-accumulation-factor & nominal-rate & agio
      * real-rate & nominal-rate
 
+   Examples:
+     * (market-price :real-capital 800 :nominal-capital 1000)
+     * (market-price :nominal-rate 0.1 :accumulation-factor 1.1 :effective-accumulation-factor 1.23 :period 5)
+     * (market-price :real-benefit 120 :nominal-benefit 135)
+     * (market-price :period 5 :nominal-rate 0.13 :real-rate 0.1 :real-benefit 120)
+     * (market-price :period 5 :effective-accumulation-factor 1.23 :nominal-rate 0.13)
+     * (market-price :period 5 :effective-accumulation-factor 1.23 :nominal-rate 0.13 :agio 35)
+     * (market-price :nominal-rate 0.13 :real-rate 0.1)
+
    References:
      * http://en.wikipedia.org/wiki/Market_price"
   (fn [& {:keys [real-capital nominal-capital nominal-rate accumulation-factor effective-accumulation-factor
