@@ -1,4 +1,7 @@
 (ns com.github.sebhoss.finj.investment)
+(:require [com.github.sebhoss.finj.math :refer :all]
+            [clojure.test :refer :all]))
+
 "
  1-2 Lineare Abschreibung 
  2-6 Arithmetisch-degressive Abschreibung
@@ -91,7 +94,7 @@
   "
   
   [{:keys [original-value years percentage-of-depreciation ]}]
-    (* original-value (expt (inc (/ percentage-of-depreciation 100)) years)
+    (* original-value (Math/pow (inc (/ percentage-of-depreciation 100)) years))
  )
    
  ( defn percentage-of-depreciation 
@@ -100,7 +103,7 @@
    "
    
    [{:keys [ declining-balance original-value economic-life]}]
-     (* 100 (inc (expt (/ declining-balance original-value)(/ 1.0 economic-life))))
+     (* 100 (inc (Math/pow (/ declining-balance original-value)(/ 1.0 economic-life))))
         
   )
  
@@ -111,6 +114,6 @@
   "
   
   [{:keys [original-value percentage-of-depreciation year ]}]
-    (* original-value (/ percentage-of-depreciation 100) (expt (inc (/ percentage-of-depreciation 100))(inc year)))
+    (* original-value (/ percentage-of-depreciation 100) (Math/pow (inc (/ percentage-of-depreciation 100))(inc year)))
  )
    
