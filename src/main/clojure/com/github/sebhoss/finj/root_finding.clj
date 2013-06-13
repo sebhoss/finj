@@ -66,7 +66,8 @@
     ))
 
 (defn secant
-  "The secant method is a root-finding method.
+  "The secant method is a root-finding algorithm that uses a succession of roots of secant lines to better approximate
+   a root of a function f.
 
    References:
      * http://en.wikipedia.org/wiki/Secant_method"
@@ -92,7 +93,8 @@
     ))
 
 (defn newton
-  "The newton method is a root-finding method.
+  "The newton method is a method for finding successively better approximations to the roots (or zeroes) of a
+   real-valued function.
 
    References:
      * http://en.wikipedia.org/wiki/Newton%27s_method"

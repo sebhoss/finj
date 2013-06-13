@@ -47,6 +47,16 @@ h3. investment/
 * @net-present-value@ _:rate :cashflows_
 * @adjusted-present-value@ _:value-without-liabilities :borrowed-capital :rate :risk-free-rate_
 
+h3. loan/
+
+* @rate-balance-due@ _:loan :period :repayment-period_
+* @rate-interest-amount@ _:loan :period :repayment-period :rate_
+* @annuity@ _:loan :repayment-period :accumulation-factor_
+* @annuity-amount@ _:loan :annuity :period :repayment-period :accumulation-factor_
+* @annuity-balance-due@ _:loan :annuity :period :accumulation-factor_
+* @annuity-interest-amount@ _:annuity :first-annuity-amount :period :accumulation-factor_
+* @period@ _:loan :annuity :accumulation-factor_
+
 h3. math/
 
 p. Wrappers around various math functions from JDK/Math and Guava/Math. Includes: @e@, @Pi@,  @mean@, @abs@, @gcd@, @lcm@, @floor@, @ceil@, @round@, @sgn@, @signum@, @sgn-eq?@, @sgn-different?@, @log2@, @ln@, @log10@, @exp@, @pow@, @sqrt@, @root@, @sin@, @cos@, @tan@, @asin@, @acos@, @atan@, @sinh@, @cosh@, @tanh@
@@ -83,16 +93,6 @@ h3. ratio/
 * @capital-recovery-factor@ _:rate :period_
 * @capitalization-rate@ _:income :cost_
 * @equity-ratio@ _:equity :total-assets_
-
-h3. repayment/
-
-* @rate-balance-due@ _:loan :period :repayment-period_
-* @rate-interest-amount@ _:loan :period :repayment-period :rate_
-* @annuity@ _:loan :repayment-period :accumulation-factor_
-* @annuity-amount@ _:loan :annuity :period :repayment-period :accumulation-factor_
-* @annuity-balance-due@ _:loan :annuity :period :accumulation-factor_
-* @annuity-interest-amount@ _:annuity :first-annuity-amount :period :accumulation-factor_
-* @period@ _:loan :annuity :accumulation-factor_
 
 h3. root-finding/
 
