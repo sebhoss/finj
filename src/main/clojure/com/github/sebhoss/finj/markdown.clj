@@ -65,6 +65,21 @@
      (* 2 (/(-(* economic-life physical-depreciation)(- original-value declining-balance))(* economic-life(inc economic-life))))
 )
 
+(defn digital-depreciation-in-the-year-k
+  "
+   Calculates the digital-annual-depreciation of just one year, the year k.
+    -annual-amount-of-the-reduction - Reduktionsbetrag der Abschreibung
+  "
+  
+  [{:keys [economic-life year annual-amount-of-the-reduction ]}]
+    (* annual-depreciation (-(+ 1 year) economic-life))
+ )
 
-
+(defn digital-annual-amount-of-the-reduction
+  "
+   Calculates the digital annual amount of the reduction
+  "
+  [{:keys [economic-life  physical-depreciation original-value declining-balance]}]
+     (* 2 (/(* 2 (- original-value declining-balance))(* economic-life(+ 1 economic-life))))
+)
   
