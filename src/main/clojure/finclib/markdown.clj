@@ -1,6 +1,5 @@
-(ns com.github.sebhoss.finj.investment)
-(:require [com.github.sebhoss.finj.math :refer :all]
-            [clojure.test :refer :all]))
+(ns finlib.markdown)
+
 
 "
  1-2 Lineare Abschreibung 
