@@ -1,4 +1,8 @@
 (ns com.github.sebhoss.finj.investment)
+"
+ 1-2 Lineare Abschreibung 
+ 2-6 Arithmetisch-degressive Abschreibung
+"
 
 (defn 	annual-depreciation 
   "
@@ -42,3 +46,25 @@
   [{:keys [ original-value years physical-depreciation]}]
    (- original-value (* years physical-depreciation))
 )
+
+(defn depreciation-in-the-year-k
+  "
+   Calculates teh annual-depreciation of just one year, the year k.
+    -annual-amount-of-the-reduction - Reduktionsbetrag der Abschreibung
+  "
+  
+  [{:keys [physical-depreciation year annual-amount-of-the-reduction ]}]
+    (- physical-depreciation (*(inc year) annual-depreciation))
+ )
+
+(defn annual-amount-of-the-reduction
+  "
+   Calculates the annual amount of the reduction
+  "
+  [{:keys [economic-life  physical-depreciation original-value declining-balance]}]
+     (* 2 (/(-(* economic-life physical-depreciation)(- original-value declining-balance))(* economic-life(inc economic-life))))
+)
+
+
+
+  
