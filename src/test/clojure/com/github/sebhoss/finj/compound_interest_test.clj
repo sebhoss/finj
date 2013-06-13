@@ -27,21 +27,21 @@
   (testing "with positive values"
     (is (≈ 974 (actual-value :present-value 500 :rate 0.1 :period 5 :start-part 1 :end-part 1)))))
 
-(deftest final-during-value-test
+(deftest final-annual-value-test
   (testing "with positive values"
-    (is (≈ 822 (final-during-value :present-value 500 :rate 0.1 :period 5 :in-year-period 12)))))
+    (is (≈ 822 (final-annual-value :present-value 500 :rate 0.1 :period 5 :in-year-period 12)))))
 
-(deftest relative-during-rate-test
+(deftest relative-annual-rate-test
   (testing "with positive values"
-    (is (≈ 0.03 (relative-during-rate :rate 0.12 :in-year-period 4) 0.01))))
+    (is (≈ 0.03 (relative-annual-rate :rate 0.12 :in-year-period 4) 0.01))))
 
-(deftest conformal-during-rate-test
+(deftest conformal-annual-rate-test
   (testing "with positive values"
-    (is (≈ 0.03 (conformal-during-rate :rate 0.12 :in-year-period 4) 0.01))))
+    (is (≈ 0.03 (conformal-annual-rate :rate 0.12 :in-year-period 4) 0.01))))
 
-(deftest effective-during-rate-test
+(deftest effective-annual-rate-test
   (testing "with positive values"
-    (is (≈ 0.12 (effective-during-rate :relative-during-rate 0.03 :in-year-period 4) 0.01))))
+    (is (≈ 0.12 (effective-annual-rate :relative-annual-rate 0.03 :in-year-period 4) 0.01))))
 
 (deftest final-continuous-value-test
   (testing "with positive values"

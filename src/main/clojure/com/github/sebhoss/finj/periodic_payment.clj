@@ -1,14 +1,19 @@
 (ns com.github.sebhoss.finj.periodic-payment
-  ""
+  "Periodic payment pay a certain amount of money per period.
+
+   Definitions:
+     * amount - Amount of an individual payment
+     * rate   - Rate of interest
+     * period - Payment periods"
   (:require [com.github.sebhoss.finj.def :refer :all]))
 
 (defnk due-value
   "Calculates the due value of a sequence of periodic payments.
 
    Parameters:
-     * amount - The payment per period
-     * rate   - The rate of interest
-     * period - The number of payment periods
+     * amount - Payment per period
+     * rate   - Rate of interest
+     * period - Number of payment periods
 
    Examples:
      * (due-value :amount 100 :rate 0.05 :period 5)
@@ -25,9 +30,9 @@
   "Calculates the due value of a sequence of periodic payments.
 
    Parameters:
-     * amount - The payment per period
-     * rate   - The rate of interest
-     * period - The number of payment periods
+     * amount - Payment per period
+     * rate   - Rate of interest
+     * period - Number of payment periods
 
    Examples:
      * (immediate-value :amount 100 :rate 0.05 :period 5)

@@ -133,7 +133,7 @@
      (pow (inc rate) period)
      (inc (* rate end-part))))
 
-(defnk final-during-value
+(defnk final-annual-value
   "Calculates the final value for a given investment with a given rate over a given period of time using during the
    periods return on investments.
 
@@ -141,12 +141,12 @@
      * present-value  - Seed capital
      * rate           - Rate of interest
      * period         - Number of interest periods
-     * in-year-period - Number of during the period periods
+     * in-year-period - Number of compounding periods per year
 
    Examples:
-     * (final-during-value :present-value 100 :rate 0.05 :period 5 :in-year-period 12)
-     * (final-during-value :present-value 500 :rate 0.1 :period 8 :in-year-period 12)
-     * (final-during-value :present-value 800 :rate 0.15 :period 12 :in-year-period 4)"
+     * (final-annual-value :present-value 100 :rate 0.05 :period 5 :in-year-period 12)
+     * (final-annual-value :present-value 500 :rate 0.1 :period 8 :in-year-period 12)
+     * (final-annual-value :present-value 800 :rate 0.15 :period 12 :in-year-period 4)"
   [:present-value :rate :period :in-year-period]
   {:pre [(number? present-value)
          (number? rate)
@@ -154,53 +154,56 @@
          (number? in-year-period)]}
   (* present-value (pow (inc (/ rate in-year-period)) (* period in-year-period))))
 
-(defnk relative-during-rate
-  "Calculates the relative, during the period rate of interest.
+(defnk relative-annual-rate
+  "Calculates the relative, annual rate of interest.
 
    Parameters:
      * rate           - Rate of interest
-     * in-year-period - Number of during the period periods
+     * in-year-period - Number of compounding periods per year
 
    Examples:
-     * (relative-during-rate :rate 0.05 :in-year-period 12)
-     * (relative-during-rate :rate 0.1 :in-year-period 4)
-     * (relative-during-rate :rate 0.15 :in-year-period 6)"
+     * (relative-annual-rate :rate 0.05 :in-year-period 12)
+     * (relative-annual-rate :rate 0.1 :in-year-period 4)
+     * (relative-annual-rate :rate 0.15 :in-year-period 6)"
   [:rate :in-year-period]
   {:pre [(number? rate)
          (number? in-year-period)]}
   (/ rate in-year-period))
 
-(defnk conformal-during-rate
-  "Calculates the conformal, during the period rate of interest.
+(defnk conformal-annual-rate
+  "Calculates the conformal, annual rate of interest.
 
    Parameters:
      * rate           - Rate of interest
-     * in-year-period - Number of during the period periods
+     * in-year-period - Number of compounding periods per year
 
    Examples:
-     * (conformal-during-rate :rate 0.05 :in-year-period 12)
-     * (conformal-during-rate :rate 0.1 :in-year-period 4)
-     * (conformal-during-rate :rate 0.15 :in-year-period 6)"
+     * (conformal-annual-rate :rate 0.05 :in-year-period 12)
+     * (conformal-annual-rate :rate 0.1 :in-year-period 4)
+     * (conformal-annual-rate :rate 0.15 :in-year-period 6)"
   [:rate :in-year-period]
   {:pre [(number? rate)
          (number? in-year-period)]}
   (dec (root in-year-period (inc rate))))
 
-(defnk effective-during-rate
-  "Calculates the effective, during the period rate of interest.
+(defnk effective-annual-rate
+  "Calculates the effective, annual rate of interest.
 
    Parameters:
-     * relative-during-rate - Relative during rate of interest
-     * in-year-period       - Number of during the period periods
+     * relative-annual-rate - Relative annual rate of interest
+     * in-year-period       - Number of compounding periods per year
 
    Examples:
-     * (effective-during-rate :relative-during-rate 0.05 :in-year-period 12)
-     * (effective-during-rate :relative-during-rate 0.1 :in-year-period 4)
-     * (effective-during-rate :relative-during-rate 0.15 :in-year-period 6)"
-  [:relative-during-rate :in-year-period]
-  {:pre [(number? relative-during-rate)
+     * (effective-annual-rate :relative-annual-rate 0.05 :in-year-period 12)
+     * (effective-annual-rate :relative-annual-rate 0.1 :in-year-period 4)
+     * (effective-annual-rate :relative-annual-rate 0.15 :in-year-period 6)
+
+   References:
+     * https://en.wikipedia.org/wiki/Effective_annual_rate"
+  [:relative-annual-rate :in-year-period]
+  {:pre [(number? relative-annual-rate)
          (number? in-year-period)]}
-  (dec (pow (inc relative-during-rate) in-year-period)))
+  (dec (pow (inc relative-annual-rate) in-year-period)))
 
 (defnk final-continuous-value
   "Calculates the final value using continuous interests.
