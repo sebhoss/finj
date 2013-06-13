@@ -2,6 +2,7 @@
 "
  1-2 Lineare Abschreibung 
  2-6 Arithmetisch-degressive Abschreibung
+ 7-9 Geometrisch-degressive Abschreibung - the geometrical-degressive depreciation
 "
 
 (defn 	annual-depreciation 
@@ -72,7 +73,7 @@
   "
   
   [{:keys [economic-life year annual-amount-of-the-reduction ]}]
-    (* annual-depreciation (-(+ 1 year) economic-life))
+    (* annual-depreciation (-(dec year) economic-life))
  )
 
 (defn digital-annual-amount-of-the-reduction
@@ -83,3 +84,33 @@
      (* 2 (/(* 2 (- original-value declining-balance))(* economic-life(+ 1 economic-life))))
 )
   
+(defn geometrical-depreciation-in-the-year-k
+  "
+   Calculates the digital-annual-depreciation of just one year, the year k.
+    -annual-amount-of-the-reduction - Reduktionsbetrag der Abschreibung
+  "
+  
+  [{:keys [original-value years percentage-of-depreciation ]}]
+    (* original-value (expt (inc (/ percentage-of-depreciation 100)) years)
+ )
+   
+ ( defn percentage-of-depreciation 
+   "
+    Calculates the percentage-of-depreciation.
+   "
+   
+   [{:keys [ declining-balance original-value economic-life]}]
+     (* 100 (inc (expt (/ declining-balance original-value)(/ 1.0 economic-life))))
+        
+  )
+ 
+ (defn geometrical-depreciation-in-the-year-k
+  "
+   Calculates the geometrical-annual-depreciation of just one year, the year k.
+    -annual-amount-of-the-reduction - Reduktionsbetrag der Abschreibung
+  "
+  
+  [{:keys [original-value percentage-of-depreciation year ]}]
+    (* original-value (/ percentage-of-depreciation 100) (expt (inc (/ percentage-of-depreciation 100))(inc year)))
+ )
+   
