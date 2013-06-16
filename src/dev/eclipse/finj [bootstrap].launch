@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="ccw.launching.clojure">
+<stringAttribute key="CCW_ATTR_FILES_LAUNCHED_AT_STARTUP" value="/finj/src/bootstrap/clojure/com/github/sebhoss/finj/bootstrap.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/common.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/compound_interest.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/def.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/deprecation.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/interest.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/investment.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/loan.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/math.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/pension.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/periodic_payment.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/predicate.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/ratio.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/root_finding.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/share_price.clj&#10;/finj/src/main/clojure/com/github/sebhoss/finj/zombie.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/common_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/compound_interest_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/deprecation_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/interest_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/investment_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/loan_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/math_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/pension_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/periodic_payment_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/predicate_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/root_finding_test.clj&#10;/finj/src/test/clojure/com/github/sebhoss/finj/share_price_test.clj"/>
+<booleanAttribute key="ccw.repl.startOnLaunch" value="true"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/finj"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="clojure.main"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="finj"/>
+</launchConfiguration>
