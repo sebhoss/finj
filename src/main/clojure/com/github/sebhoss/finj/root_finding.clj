@@ -1,15 +1,15 @@
 (ns com.github.sebhoss.finj.root-finding
   "Root finding algorithms"
-  (:require [com.github.sebhoss.finj.math :refer :all]))
+  (:require [com.github.sebhoss.finj.def :refer :all]
+            [com.github.sebhoss.finj.math :refer :all]))
 
 (defrecord SearchResult [estimate estimation-error number-of-iterations first-value second-value])
 
-(defn iter-root-search
+(defnk iter-root-search
   "Iterative search for a root using two values as inputs."
-  [& {:keys [^IFn function ^Number first-value ^Number second-value ^Number tolerance
-             ^Number max-iterations ^IFn next-estimate ^IFn next-first ^IFn next-second]
-      :or {tolerance 0.00001
-           max-iterations 100}}]
+  [:function :first-value :second-value :next-estimate :next-first :next-second
+   :opt-def :tolerance 0.00001
+            :max-iterations 100]
   {:pre [(pos? tolerance)
          (pos? max-iterations)]
    :post [(< (abs (:estimation-error %)) tolerance)
@@ -26,7 +26,7 @@
           (recur (next-first result) (next-second result) (inc iteration))))
       (throw (IllegalArgumentException. "max number of iterations exceeded - could not satisfy tolerance")))))
 
-(defn bisect
+(defnk bisect
   "Root-finding method which repeatedly bisects an interval and then selects a subinterval in which a root must lie for
    further processing. It is a very simple and robust method, but it is also relatively slow. Because of this, it is
    often used to obtain a rough approximation to a solution which is then used as a starting point for more rapidly
@@ -41,9 +41,9 @@
 
    References:
      * http://en.wikipedia.org/wiki/Bisection_method"
-  [& {:keys [function lower-startpoint upper-startpoint tolerance max-iterations]
-      :or {tolerance 0.00001
-           max-iterations 100}}]
+  [:function :lower-startpoint :upper-startpoint
+   :opt-def :tolerance 0.00001
+            :max-iterations 100]
   {:pre [(< lower-startpoint upper-startpoint)
          (sgn-different? (function lower-startpoint) (function upper-startpoint))]
    :post [(< (:first-value %) (:second-value %))]}
@@ -53,8 +53,7 @@
     :second-value upper-startpoint
     :tolerance tolerance
     :max-iterations max-iterations
-    :next-estimate (fn [first-value second-value]
-                     (mean first-value second-value))
+    :next-estimate #(mean %1 %2)
     :next-first (fn [result]
                   (if (pos? (:estimation-error result))
                     (:first-value result)
@@ -62,18 +61,17 @@
     :next-second (fn [result]
                    (if (pos? (:estimation-error result))
                      (:estimate result)
-                     (:second-value result)))
-    ))
+                     (:second-value result)))))
 
-(defn secant
+(defnk secant
   "The secant method is a root-finding algorithm that uses a succession of roots of secant lines to better approximate
    a root of a function f.
 
    References:
      * http://en.wikipedia.org/wiki/Secant_method"
-  [& {:keys [function first second tolerance max-iterations]
-      :or {tolerance 0.00001
-           max-iterations 100}}]
+  [:function :first :second
+   :opt-def :tolerance 0.00001
+            :max-iterations 100]
   (iter-root-search
     :function function
     :first-value first
@@ -89,18 +87,17 @@
     :next-first (fn [result]
                   (:estimate result))
     :next-second (fn [result]
-                   (:first-value result))
-    ))
+                   (:first-value result))))
 
-(defn newton
+(defnk newton
   "The newton method is a method for finding successively better approximations to the roots (or zeroes) of a
    real-valued function.
 
    References:
      * http://en.wikipedia.org/wiki/Newton%27s_method"
-  [& {:keys [function derivative min-denominator start-value tolerance max-iterations]
-      :or {tolerance 0.00001
-           max-iterations 100}}]
+  [:function :derivative :min-denominator :start-value
+   :opt-def :tolerance 0.00001
+            :max-iterations 100]
   (iter-root-search 
     :function function
     :first-value start-value
@@ -114,18 +111,17 @@
                          (- first-value (/ (function first-value)
                                            denominator)))))
     :next-first (fn [result] (:estimate result))
-    :next-second (fn [result] nil)
-    ))
+    :next-second (fn [result] nil)))
 
-(defn regula-falsi
+(defnk regula-falsi
   "The false position method or regula falsi method is a term for problem-solving methods in arithmetic, algebra, and
    calculus.
 
    References:
      * http://en.wikipedia.org/wiki/False_position_method"
-  [& {:keys [function lower-startpoint upper-startpoint tolerance max-iterations]
-      :or {tolerance 0.00001
-           max-iterations 100}}]
+  [:function :lower-startpoint :upper-startpoint
+   :opt-def :tolerance 0.00001
+            :max-iterations 100]
   {:pre [(< lower-startpoint upper-startpoint)
          (sgn-different? (function lower-startpoint) (function upper-startpoint))]
    :post [(< (:first-value %) (:second-value %))]}
@@ -147,5 +143,4 @@
     :next-second (fn [result]
                    (if (pos? (:estimation-error result))
                      (:estimate result)
-                     (:second-value result)))
-    ))
+                     (:second-value result)))))
