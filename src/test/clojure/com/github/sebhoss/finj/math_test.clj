@@ -14,13 +14,13 @@
 
 (deftest signum-test
   (testing "with positive numbers"
-    (is (= 1 (signum 1)))
-    (is (= 1 (signum 1/12))))
+    (is (= 1.0 (signum 1)))
+    (is (= 1.0 (signum 1/12))))
   (testing "with negative numbers"
-    (is (= -1 (signum -1)))
-    (is (= -1 (signum -1/12))))
+    (is (= -1.0 (signum -1)))
+    (is (= -1.0 (signum -1/12))))
   (testing "with zero"
-    (is (= 0 (signum 0)))))
+    (is (= 0.0 (signum 0)))))
 
 (deftest sgn-eq?-test
   (testing "with equal signed integers"
@@ -64,25 +64,11 @@
   (testing "with positive and negative integers"
     (is (= -1 (mean 1 -3)))
     (is (= 2 (mean -1 5)))
-    (is (= -3 (mean 1 -7)))))
-
-(deftest gcd-test
-  (testing "with positive integers"
-    (is (= 5 (gcd 10 5))))
-  (testing "with negative integers"
-    (is (thrown? IllegalArgumentException (gcd 10 -5)))
-    (is (thrown? IllegalArgumentException (gcd -10 5))))
-  (testing "with zeros"
-    (is (= 10 (gcd 10 0)))))
-
-(deftest lcm-test
-  (testing "with positive integers"
-    (is (= 10 (lcm 10 5))))
-  (testing "with negative integers"
-    (is (thrown? IllegalArgumentException (lcm 10 -5)))
-    (is (thrown? IllegalArgumentException (lcm -10 5))))
-  (testing "with zeros"
-    (is (= 0 (lcm 10 0)))))
+    (is (= -3 (mean 1 -7))))
+  (testing "with variable arguments"
+    (is (= 3 (mean 1 2 3 4 5))))
+  (testing "with vectors"
+    (is (= 3 (mean [1 3 5])))))
 
 (deftest floor-test
   (testing "with positive numbers"
@@ -123,16 +109,6 @@
     (is (Double/isNaN (root 3 -8))))
   (testing "with zero"
     (is (= 0.0 (root 3 0)))))
-
-(deftest log2-test
-  (testing "with integer"
-    (is (float? (log2 (int 1)))))
-  (testing "with long"
-    (is (float? (log2 (long 1)))))
-  (testing "with float"
-    (is (float? (log2 (float 1)))))
-  (testing "with double"
-    (is (float? (log2 (double 1))))))
 
 (deftest ln-test
   (testing "with integer"

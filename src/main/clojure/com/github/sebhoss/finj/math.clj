@@ -1,6 +1,5 @@
 (ns com.github.sebhoss.finj.math
-  "Misc math functions"
-  (:import (com.google.common.math IntMath LongMath DoubleMath)))
+  "Misc math functions")
 
 (def ^:const e
   "e is the double value that is closer than any other to e, the base of the natural logarithms."
@@ -11,40 +10,20 @@
    diameter."
   (Math/PI))
 
-(defprotocol MEAN
-  (mean [x y] "(mean x y) is the mean value of x and y"))
-(extend-protocol MEAN
-  Integer
-    (mean [x y] (IntMath/mean x y))
-  Long
-    (mean [x y] (LongMath/mean x y))
-  Number
-    (mean [x y] (/ (+ x y) 2)))
+(defn mean 
+  "(mean & more) calculates the arithmetic mean of a variable number of numbers."
+  [& more]
+  (let [numbers (flatten more)
+        length (count numbers)]
+    (if (zero? length)
+      0
+      (/ (reduce + numbers) length))))
 
 (defprotocol ABS
   (abs [x] "(abs x) is the absolute value of x"))
 (extend-protocol ABS
   Number
     (abs [x] (if (neg? x) (- x) x)))
-
-(defprotocol GCD
-  (gcd [x y] "(gcd x y) returns the greatest common divisor of x and y"))
-(extend-protocol GCD
-  Integer
-    (gcd [x y] (IntMath/gcd x y))
-  Long
-    (gcd [x y] (LongMath/gcd x y))
-  BigInteger
-    (gcd [x y] (.gcd x y)))
-
-(defprotocol LCM
-  (lcm [x y] "(lcm x y) returns the least common multiple of x and y"))
-(extend-protocol LCM
-  Number
-    (lcm [x y] (cond
-                 (zero? x) 0
-                 (zero? y) 0
-                 :else (abs (* y (/ x (gcd x y)))))))
 
 (defprotocol Rounding
   (floor [x] "(floor x) is x rounded down")
@@ -69,22 +48,17 @@
         (pos? x) "+"
         :else ""))
     (signum [x]
-      (cond
-        (neg? x) -1
-        (pos? x) 1
-        :else 0))
+      (Math/signum (double x)))
     (sgn-eq? [x y]
       (= (sgn x) (sgn y)))
     (sgn-different? [x y]
       (not (sgn-eq? x y))))
 
 (defprotocol Logarithm
-  (log2 [x] "(log2 x) is the base 2 logarithm of x")
   (ln [x] "(ln x) is the natural (base e) logarithm of x")
   (log10 [x] "(log10 x) is the base 10 logarithm of x"))
 (extend-protocol Logarithm
   Number
-    (log2 [x] (DoubleMath/log2 x))
     (ln [x] (Math/log x))
     (log10 [x] (Math/log10 x)))
 
