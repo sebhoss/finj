@@ -28,6 +28,14 @@ h3. compound-interest/
 * @intensity@ _:rate_
 * @rate@ _:intensity_
 
+h3. deprecation/
+
+* @straight-line-annual-expense@ _:fixed-asset :residual-value :period_
+* @straight-line-expense@ _:fixed-asset :residual-value :period_
+* @straight-line-accumulated@ _:fixed-asset :residual-value :period_
+* @straight-line-book-value@ _:fixed-asset :residual-value :period_
+* @declining-balance-rate@ _:fixed-asset :residual-value :period_
+
 h3. interest/
 
 * @amount@ _:present-value :rate :period_
@@ -54,7 +62,7 @@ h3. loan/
 
 h3. math/
 
-p. Wrappers around various math functions from JDK/Math and Guava/Math. Includes: @e@, @Pi@,  @mean@, @abs@, @gcd@, @lcm@, @floor@, @ceil@, @round@, @sgn@, @signum@, @sgn-eq?@, @sgn-different?@, @log2@, @ln@, @log10@, @exp@, @pow@, @sqrt@, @root@, @sin@, @cos@, @tan@, @asin@, @acos@, @atan@, @sinh@, @cosh@, @tanh@
+p. Various math functions (most from JDK/Math): @e@, @Pi@, @mean@, @abs@, @floor@, @ceil@, @round@, @sgn@, @signum@, @sgn-eq?@, @sgn-different?@, @ln@, @log10@, @exp@, @pow@, @sqrt@, @root@, @sin@, @cos@, @tan@, @asin@, @acos@, @atan@, @sinh@, @cosh@, @tanh@
 
 h3. pension/
 
