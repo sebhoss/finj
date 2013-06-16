@@ -124,18 +124,6 @@ bc.
   </dependencies>
   
 
-h2. Development
-
-h3. License
+h2. License
 
 p. This program is free software. It comes without any warranty, to the extent permitted by applicable law. You can redistribute it and/or modify it under the terms of the Do What The Fuck You Want To Public License, Version 2, as published by Sam Hocevar. See "http://www.wtfpl.net/":http://www.wtfpl.net/ for more details.
-
-h3. Setup
-
-p. This project is using "Clojure":http://clojure.org/, "Maven":http://maven.apache.org/, "Eclipse":http://eclipse.org/ and "Git":http://git-scm.com/ as the main development tools. To build the project yourself just download & install at least Clojure 1.5 & Maven 3.0 and call *mvn install* inside the project folder. Maven should then proceed to clean, build, test, package and install this project.
-
-p. Use the project import wizard from Eclipse to import this project. The integrated m2e-plugin will automatically setup the needed configuration files for Eclipse. If you are using an old version of Eclipse run *mvn eclipse:eclipse* first and then import this project into Eclipse.
-
-h3. Versioning
-
-p. This project follows the "semantic versioning":http://semver.org/ guidelines.
