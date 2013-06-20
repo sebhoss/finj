@@ -11,7 +11,17 @@
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
-      <version>1.5.0-beta1</version>
+      <version>1.5.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>tools.namespace</artifactId>
+      <version>0.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>java.classpath</artifactId>
+      <version>0.2.0</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
