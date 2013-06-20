@@ -33,7 +33,7 @@
   Number
     (floor [x] (Math/floor x))
     (ceil [x] (Math/ceil x))
-    (round [x] (Math/round x)))
+    (round [x] (Math/round (double x))))
 
 (defprotocol Sign
   (sgn [x] "(sgn x) returns '+' for positive, '-' for negative numbers and an empty string for zero")
