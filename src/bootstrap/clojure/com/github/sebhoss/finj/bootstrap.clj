@@ -1,19 +1,47 @@
-(require '[com.github.sebhoss.finj.common :as common])
-(require '[com.github.sebhoss.finj.compound-interest :as compound-interest])
-(require '[com.github.sebhoss.finj.def :as def])
-(require '[com.github.sebhoss.finj.deprecation :as deprecation])
-(require '[com.github.sebhoss.finj.interest :as interest])
-(require '[com.github.sebhoss.finj.investment :as investment])
-(require '[com.github.sebhoss.finj.loan :as loan])
-(require '[com.github.sebhoss.finj.math :as math])
-(require '[com.github.sebhoss.finj.pension :as pension])
-(require '[com.github.sebhoss.finj.periodic-payment :as periodic-payment])
-(require '[com.github.sebhoss.finj.predicate :as predicate])
-(require '[com.github.sebhoss.finj.ratio :as ratio])
-(require '[com.github.sebhoss.finj.root-finding :as root-finding])
-(require '[com.github.sebhoss.finj.share-price :as share-price])
+;;; Load all finj namespaces
+;; 0. Require dependencies
+(require '[clojure.java.classpath :refer [classpath]])
+(require '[clojure.tools.namespace.find :refer [find-namespaces]])
+(require '[clojure.string :refer [blank? split]])
 
+;; 1. Find all namespaces inside this project and all dependencies on the classpath
+(defn finj-namespace? [namespace]
+  (not (blank? (re-find #".*?finj" (.toString namespace)))))
+
+(def finj-namespaces
+  (find-namespaces (filter finj-namespace? (classpath))))
+
+;; 2. Require every namespace with its name as alias
+(defn ns-alias [namespace]
+  (symbol (last (split (.toString namespace) #"\."))))
+
+(defn ns-alias-split [namespace]
+  (vector namespace (ns-alias namespace)))
+
+(def finj-namespace-alias
+  (map ns-alias-split finj-namespaces))
+
+(defn require-namespace [[namespace alias]]
+  (require (vector namespace :as alias)))
+
+(defn load-finj-namespaces []
+  (when (empty? (remove nil?
+                  (map require-namespace finj-namespace-alias)))
+      :ok))
+
+;; 3. Load finj namespaces (+ create alias for load-finj-namespaces)
+(def lfn (load-finj-namespaces))
+
+
+;;; 'refresh' support
+(require '[clojure.tools.namespace.repl :refer [refresh]])
+
+
+;;; 'doc', 'source', etc. support
 (require '[clojure.repl :refer :all])
+
+
+;;; Alias function which runs all tests inside the finj project
 (require '[clojure.test :as test])
 
 (defn rat
