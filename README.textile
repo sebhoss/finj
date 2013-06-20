@@ -35,6 +35,15 @@ h3. deprecation/
 * @straight-line-accumulated@ _:fixed-asset :residual-value :period_
 * @straight-line-book-value@ _:fixed-asset :residual-value :period_
 * @declining-balance-rate@ _:fixed-asset :residual-value :period_
+* @declining-balance-rate-expense@ _:fixed-asset :residual-value :period_
+* @declining-balance-rate-accumulated@ _:fixed-asset :residual-value :period_
+* @declining-balance-rate-book-value@ _:fixed-asset :residual-value :period_
+* @sum-of-years-digit-expense@ _:fixed-asset :residual-value :period_
+* @sum-of-years-digit-accumulated@ _:fixed-asset :residual-value :period_
+* @sum-of-years-digit-book-value@ _:fixed-asset :residual-value :period_
+* @units-of-production-expense@ _:fixed-asset :residual-value :production_
+* @units-of-production-accumulated@ _:fixed-asset :residual-value :production_
+* @units-of-production-book-value@ _:fixed-asset :residual-value :production_
 
 h3. interest/
 
