@@ -1,11 +1,63 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+  
   <groupId>com.github.sebhoss</groupId>
   <artifactId>finj</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>clojure</packaging>
   <name>finj</name>
   <description>Finance library written in Clojure.</description>
+  <url>https://github.com/sebhoss/finj</url>
+
+  <licenses>
+    <license>
+      <name>WTFPL - Do What The Fuck You Want To Public License</name>
+      <url>http://www.wtfpl.net/</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git://github.com/sebhoss/finj.git</connection>
+    <developerConnection>scm:git:git://github.com/sebhoss/finj.git</developerConnection>
+    <tag>master</tag>
+    <url>${project.url}</url>
+  </scm>
+  
+  <developers>
+    <developer>
+      <id>s</id>
+      <name>Adrian Heinemann</name>
+      <email>adrian@heinemann.ms</email>
+      <url>http://heinemann.ms/</url>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <timezone>Europe/Berlin</timezone>
+    </developer>
+    <developer>
+      <id>s</id>
+      <name>Sebastian Hoß</name>
+      <email>mail@shoss.de</email>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <timezone>Europe/Berlin</timezone>
+    </developer>
+  </developers>
+  
+  <properties>
+    <global.encoding>UTF-8</global.encoding>
+
+    <project.build.sourceEncoding>${global.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${global.encoding}</project.reporting.outputEncoding>
+  </properties>
 
   <dependencies>
     <dependency>
