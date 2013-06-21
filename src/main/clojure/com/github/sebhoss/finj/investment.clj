@@ -83,5 +83,5 @@
          (number? period)
          (number? maintenance)
          (number? rate)]}
-  (let [present-immediate-value (present-immediate-value :rate rate :period period)]
-    (+ maintenance (/ investment present-immediate-value))))
+  (let [present-immediate-factor (present-immediate-factor :rate rate :period period)]
+    (+ maintenance (/ investment present-immediate-factor))))

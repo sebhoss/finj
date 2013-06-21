@@ -8,6 +8,43 @@
   (:require [com.github.sebhoss.finj.def :refer :all]
             [com.github.sebhoss.finj.math :refer :all]))
 
+(defnk present-immediate-factor
+  "Calculates the annuity immediate factor.
+
+   Parameters:
+     * rate    - Interest rate per period
+     * period  - Number of terms
+
+   Examples:
+     * (present-immediate-factor :rate 0.05 :period 5)
+     * (present-immediate-factor :rate 0.1 :period 8)
+     * (present-immediate-factor :rate 0.15 :period 12)
+
+   References:
+     * http://en.wikipedia.org/wiki/Annuity_(finance_theory)#Annuity-immediate"
+  [:rate :period]
+  (/ (- 1 (pow (inc rate) (- period)))
+        rate))
+
+(defnk future-immediate-factor
+  "Calculates the annuity due factor.
+
+   Parameters:
+     * rate    - Interest rate per period
+     * period  - Number of terms
+
+   Examples:
+     * (future-immediate-factor :rate 0.05 :period 5)
+     * (future-immediate-factor :rate 0.1 :period 8)
+     * (future-immediate-factor :rate 0.15 :period 12)
+
+   References:
+     * http://en.wikipedia.org/wiki/Annuity_(finance_theory)#Annuity-immediate"
+  [:rate :period]
+  (/ (dec (pow (inc rate) period))
+     rate))
+
+
 (defnk present-immediate-value
   "An annuity is a series of payments made at fixed intervals of time. If the number of payments is known in advance,
    the annuity is an annuity-certain. If the payments are made at the end of the time periods, so that interest is
@@ -17,41 +54,57 @@
    the fact that payments are being made at various moments in the future.
 
    Parameters:
-     * rate   - Interest rate per period
-     * period - Number of terms
+     * payment - Payment per period
+     * rate    - Interest rate per period
+     * period  - Number of terms
+
+   Examples:
+     * (present-immediate-value :payment 100 :rate 0.05 :period 5)
+     * (present-immediate-value :payment 200 :rate 0.1 :period 8)
+     * (present-immediate-value :payment 300 :rate 0.15 :period 12)
 
    References:
      * http://en.wikipedia.org/wiki/Annuity_(finance_theory)#Annuity-immediate"
-  [:rate :period]
-  (/ (- 1 (pow (inc rate) (- period)))
-     rate))
+  [:payment :rate :period]
+  (* payment (present-immediate-factor :rate rate :period period)))
 
 (defnk future-immediate-value
   "The future value of an annuity is the accumulated amount, including payments and interest, of a stream of payments
    made to an interest-bearing account. For an annuity-immediate, it is the value immediately after the n-th payment.
 
    Parameters:
-     * rate   - Interest rate per period
-     * period - Number of terms
+     * payment - Payment per period
+     * rate    - Interest rate per period
+     * period  - Number of terms
+
+   Examples:
+     * (future-immediate-value :payment 100 :rate 0.05 :period 5)
+     * (future-immediate-value :payment 200 :rate 0.1 :period 8)
+     * (future-immediate-value :payment 300 :rate 0.15 :period 12)
 
    References:
      * http://en.wikipedia.org/wiki/Annuity_(finance_theory)#Annuity-immediate"
-  [:rate :period]
-  (/ (dec (pow (inc rate) period))
-     rate))
+  [:payment :rate :period]
+  (* payment (future-immediate-factor :rate rate :period period)))
 
 (defnk present-due-value
   "An annuity-due is an annuity whose payments are made at the beginning of each period.
    Deposits in savings, rent or lease payments, and insurance premiums are examples of annuities due.
 
    Parameters:
-     * rate   - Interest rate per period
-     * period - Number of terms
+     * payment - Payment per period
+     * rate    - Interest rate per period
+     * period  - Number of terms
+
+   Examples:
+     * (present-due-value :payment 100 :rate 0.05 :period 5)
+     * (present-due-value :payment 200 :rate 0.1 :period 8)
+     * (present-due-value :payment 300 :rate 0.15 :period 12)
 
    References:
      * http://en.wikipedia.org/wiki/Annuity_(finance_theory)#Annuity-due"
-  [:rate :period]
-  (let [immediate-value (present-immediate-value :rate rate :period period)]
+  [:payment :rate :period]
+  (let [immediate-value (present-immediate-value :payment payment :rate rate :period period)]
     (* (inc rate) immediate-value)))
 
 (defnk future-due-value
@@ -59,13 +112,19 @@
    Deposits in savings, rent or lease payments, and insurance premiums are examples of annuities due.
 
    Parameters:
-     * rate   - Interest rate per period
-     * period - Number of terms
+     * payment - Payment per period
+     * rate    - Interest rate per period
+     * period  - Number of terms
+
+   Examples:
+     * (future-due-value :payment 100 :rate 0.05 :period 5)
+     * (future-due-value :payment 200 :rate 0.1 :period 8)
+     * (future-due-value :payment 300 :rate 0.15 :period 12)
 
    References:
      * http://en.wikipedia.org/wiki/Annuity_(finance_theory)#Annuity-due"
-  [:rate :period]
-  (let [immediate-value (future-immediate-value :rate rate :period period)]
+  [:payment :rate :period]
+  (let [immediate-value (future-immediate-value :payment payment :rate rate :period period)]
     (* (inc rate) immediate-value)))
 
 (defnk perpetuity-immediate-value
@@ -73,22 +132,34 @@
    This function calculates the present value of an immediate perpetuity.
 
    Parameters:
-     * rate   - Interest rate per period
+     * payment - Payment per period
+     * rate    - Interest rate per period
+
+   Examples:
+     * (perpetuity-immediate-value :payment 100 :rate 0.05)
+     * (perpetuity-immediate-value :payment 200 :rate 0.1)
+     * (perpetuity-immediate-value :payment 300 :rate 0.15)
 
    References:
      * http://en.wikipedia.org/wiki/Annuity_(finance_theory)#Perpetuity"
-  [:rate]
-  (/ 1 rate))
+  [:payment :rate]
+  (/ payment rate))
 
 (defnk perpetuity-due-value
   "A perpetuity is an annuity for which the payments continue forever.
    This function calculates the present value of a due perpetuity.
 
    Parameters:
-     * rate   - Interest rate per period
+     * payment - Payment per period
+     * rate    - Interest rate per period
+
+   Examples:
+     * (perpetuity-due-value :payment 100 :rate 0.05)
+     * (perpetuity-due-value :payment 200 :rate 0.1)
+     * (perpetuity-due-value :payment 300 :rate 0.15)
 
    References:
      * http://en.wikipedia.org/wiki/Annuity_(finance_theory)#Perpetuity"
-  [:rate]
+  [:payment :rate]
   (let [effective-discount-rate (/ rate (inc rate))]
-    (/ 1 effective-discount-rate)))
+    (/ payment effective-discount-rate)))
