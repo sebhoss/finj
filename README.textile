@@ -7,6 +7,15 @@ h2. Usage
 
 p. The library is divided into the following namespaces and functions: 
 
+h3. annuity
+
+* @present-immediate-value@ _:rate :period_
+* @present-due-value@ _:rate :period_
+* @future-immediate-value@ _:rate :period_
+* @future-due-value@ _:rate :period_
+* @perpetuity-immediate-value@ _:rate_
+* @perpetuity-due-value@ _:rate_
+
 h3. common/
 
 * @rate@ _:rate-per-cent_
@@ -58,6 +67,7 @@ h3. investment/
 
 * @net-present-value@ _:rate :cashflows_
 * @adjusted-present-value@ _:value-without-liabilities :borrowed-capital :rate :risk-free-rate_
+* @equivalent-annual-cost@ _:investment :period :maintenance :rate_
 
 h3. loan/
 
