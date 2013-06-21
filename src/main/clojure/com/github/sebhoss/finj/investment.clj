@@ -8,7 +8,8 @@
    References:
      * http://en.wikipedia.org/wiki/Investment"
   (:require [com.github.sebhoss.finj.def :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]))
+            [com.github.sebhoss.finj.math :refer :all]
+            [com.github.sebhoss.finj.annuity :refer :all]))
 
 (defnk net-present-value
   "Calculates the net present value (NPV) of a time series of cash flows.
@@ -59,3 +60,28 @@
   (+ value-without-liabilities
      (reduce + (map #(/ (* %1 rate risk-free-rate) (pow (inc risk-free-rate) %2))
                  borrowed-capital (range)))))
+
+(defnk equivalent-annual-cost
+  "In finance the equivalent annual cost (EAC) is the cost per year of owning and operating an asset over its entire
+   lifespan.
+
+   Parameters:
+     * investment  - Total invesment cost
+     * period      - Expected lifetime of the investment
+     * maintenance - Annual maintenance costs
+     * rate        - Cost of invested capital
+
+   Examples:
+     * (equivalent-annual-cost :investment 50000 :period 3 :maintenance 13000 :rate 0.05)
+     * (equivalent-annual-cost :investment 150000 :period 8 :maintenance 7500 :rate 0.05)
+     * (equivalent-annual-cost :investment 75000 :period 5 :maintenance 11000 :rate 0.15)
+
+   References:
+     * http://en.wikipedia.org/wiki/Equivalent_annual_cost"
+  [:investment :period :maintenance :rate]
+  {:pre [(number? investment)
+         (number? period)
+         (number? maintenance)
+         (number? rate)]}
+  (let [present-immediate-value (present-immediate-value :rate rate :period period)]
+    (+ maintenance (/ investment present-immediate-value))))
