@@ -16,3 +16,8 @@
                  :borrowed-capital [200 300 400 350]
                  :rate 0.1
                  :risk-free-rate 0.08)))))
+
+(deftest equivalent-annual-cost-test
+  (testing "the example from wikipedia"
+    (is (≈ 31360 (equivalent-annual-cost :investment 50000 :period 3 :maintenance 13000 :rate 0.05)))
+    (is (≈ 30708 (equivalent-annual-cost :investment 150000 :period 8 :maintenance 7500 :rate 0.05)))))
