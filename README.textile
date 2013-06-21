@@ -9,12 +9,14 @@ p. The library is divided into the following namespaces and functions:
 
 h3. annuity
 
-* @present-immediate-value@ _:rate :period_
-* @present-due-value@ _:rate :period_
-* @future-immediate-value@ _:rate :period_
-* @future-due-value@ _:rate :period_
-* @perpetuity-immediate-value@ _:rate_
-* @perpetuity-due-value@ _:rate_
+* @present-immediate-factor@ _:rate :period_
+* @future-immediate-factor@ _:rate :period_
+* @present-immediate-value@ _:payment :rate :period_
+* @present-due-value@ _:payment :rate :period_
+* @future-immediate-value@ _:payment :rate :period_
+* @future-due-value@ _:payment :rate :period_
+* @perpetuity-immediate-value@ _:payment :rate_
+* @perpetuity-due-value@ _:payment :rate_
 
 h3. common/
 
