@@ -15,7 +15,8 @@
    References:
      * http://en.wikipedia.org/wiki/Depreciation"
   (:require [com.github.sebhoss.finj.def :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]))
+            [com.github.sebhoss.finj.math :refer :all]
+            [com.github.sebhoss.finj.predicate :refer :all]))
 
 (defnk straight-line-annual-expense
   "Calculates the annual deprecation expense of an asset using straight line deprecation.
@@ -375,10 +376,9 @@
          (number? residual-value)
          (coll? production)]
    :post [(= fixed-asset (first %))
-          (= residual-value (last %))]}
+          (≈ residual-value (last %))]}
   (let [accumulated (units-of-production-accumulated
                    :fixed-asset fixed-asset
                    :residual-value residual-value
                    :production production)]
-    (into (vector fixed-asset)
-          (map #(- fixed-asset %) accumulated))))
+    (flatten (list fixed-asset (map #(- fixed-asset %) accumulated)))))
