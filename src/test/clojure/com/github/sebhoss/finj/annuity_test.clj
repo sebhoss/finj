@@ -3,6 +3,14 @@
             [com.github.sebhoss.finj.predicate :refer :all]
             [clojure.test :refer :all]))
 
+(deftest present-immediate-factor-test
+  (testing "with positive integers"
+    (is (≈ 4 (present-immediate-factor :rate 0.05 :period 5)))))
+
+(deftest future-immediate-factor-test
+  (testing "with positive integers"
+    (is (≈ 5 (future-immediate-factor :rate 0.05 :period 5)))))
+
 (deftest present-immediate-value-test
   (testing "with positive integers"
     (is (≈ 432 (present-immediate-value :payment 100 :rate 0.05 :period 5)))))
