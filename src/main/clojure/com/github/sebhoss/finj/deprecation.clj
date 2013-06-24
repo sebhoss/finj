@@ -113,7 +113,9 @@
   [:fixed-asset :residual-value :period]
   {:pre [(number? fixed-asset)
          (number? residual-value)
-         (number? period)]}
+         (number? period)]
+   :post [(= fixed-asset (first %))
+          (≈ residual-value (last %))]}
   (let [annual-expense (straight-line-annual-expense
                          :fixed-asset fixed-asset
                          :residual-value residual-value
@@ -166,7 +168,9 @@
   [:fixed-asset :residual-value :period]
   {:pre [(number? fixed-asset)
          (number? residual-value)
-         (number? period)]}
+         (number? period)]
+   :post [(= fixed-asset (first %))
+          (≈ residual-value (last %))]}
   (let [rate (declining-balance-rate
                :fixed-asset fixed-asset
                :residual-value residual-value
@@ -296,7 +300,9 @@
   [:fixed-asset :residual-value :period]
   {:pre [(number? fixed-asset)
          (number? residual-value)
-         (number? period)]}
+         (number? period)]
+   :post [(= fixed-asset (first %))
+          (≈ residual-value (last %))]}
   (let [accumulated (sum-of-years-digit-accumulated
                    :fixed-asset fixed-asset
                    :residual-value residual-value
