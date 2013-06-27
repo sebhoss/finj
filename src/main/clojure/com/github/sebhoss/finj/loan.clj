@@ -24,8 +24,11 @@
 
    Examples:
      * (rate-balance-due :loan 1000 :period 10 :repayment-period 3)
+       => -7000/3
      * (rate-balance-due :loan 1250 :period 12 :repayment-period 5)
-     * (rate-balance-due :loan 1800 :period 15 :repayment-period 8)"
+       => -1750N
+     * (rate-balance-due :loan 1800 :period 15 :repayment-period 8)
+       => -1575N"
   [:loan :period :repayment-period]
   {:pre [(number? loan)
          (number? period)
@@ -43,8 +46,11 @@
 
    Examples:
      * (rate-interest-amount :loan 1000 :period 10 :repayment-period 3 :rate 0.05)
+       => -100.0
      * (rate-interest-amount :loan 1250 :period 12 :repayment-period 5 :rate 0.1)
-     * (rate-interest-amount :loan 1800 :period 15 :repayment-period 8 :rate 0.15)"
+       => -150.0
+     * (rate-interest-amount :loan 1800 :period 15 :repayment-period 8 :rate 0.15)
+       => -202.5"
   [:loan :period :repayment-period :rate]
   {:pre [(number? loan)
          (number? period)
@@ -62,8 +68,11 @@
 
    Examples:
      * (annuity :loan 100 :period 5 :accumulation-factor 1.05)
+       => 23.097479812826812
      * (annuity :loan 130 :period 8 :accumulation-factor 1.1)
+       => 24.367722284725755
      * (annuity :loan 180 :period 12 :accumulation-factor 1.15)
+       => 33.2065397035511
 
    References:
      * http://en.wikipedia.org/wiki/Annuity_(finance_theory)"
@@ -85,8 +94,11 @@
 
    Examples:
      * (annuity-amount :loan 100 :annuity 50 :period 5 :accumulation-factor 1.05)
+       => 54.69778125
      * (annuity-amount :loan 130 :annuity 70 :period 8 :accumulation-factor 1.1)
-     * (annuity-amount :loan 180 :annuity 105 :period 12 :accumulation-factor 1.15)"
+       => 111.07687470000005
+     * (annuity-amount :loan 180 :annuity 105 :period 12 :accumulation-factor 1.15)
+       => 362.88652889299925"
   [:loan :annuity :period :accumulation-factor]
   {:pre [(number? loan)
          (number? annuity)
@@ -106,8 +118,11 @@
 
    Examples:
      * (annuity-balance-due :loan 100 :annuity 50 :period 5 :accumulation-factor 1.05)
+       => -148.65340625000005
      * (annuity-balance-due :loan 130 :annuity 70 :period 8 :accumulation-factor 1.1)
-     * (annuity-balance-due :loan 180 :annuity 105 :period 12 :accumulation-factor 1.15)"
+       => -521.8456217
+     * (annuity-balance-due :loan 180 :annuity 105 :period 12 :accumulation-factor 1.15)
+       => -2082.130054846329"
   [:loan :annuity :period :accumulation-factor]
   {:pre [(number? loan)
          (number? annuity)
@@ -128,8 +143,11 @@
 
    Examples:
      * (annuity-interest-amount :annuity 500 :first-annuity-amount 70 :period 4 :accumulation-factor 1.05)
+       => 418.96625
      * (annuity-interest-amount :annuity 600 :first-annuity-amount 80 :period 7 :accumulation-factor 1.1)
-     * (annuity-interest-amount :annuity 720 :first-annuity-amount 95 :period 9 :accumulation-factor 1.15)"
+       => 458.2751199999999
+     * (annuity-interest-amount :annuity 720 :first-annuity-amount 95 :period 9 :accumulation-factor 1.15)
+       => 429.39282805878923"
   [:annuity :first-annuity-amount :period :accumulation-factor]
   {:pre [(number? annuity)
          (number? first-annuity-amount)
@@ -147,8 +165,11 @@
 
    Examples:
      * (period :loan 500 :annuity 120 :accumulation-factor 1.05)
+       => 4.788154644658259
      * (period :loan 540 :annuity 160 :accumulation-factor 1.1)
-     * (period :loan 590 :annuity 180 :accumulation-factor 1.15)"
+       => 4.319944857590922
+     * (period :loan 590 :annuity 180 :accumulation-factor 1.15)
+       => 4.841216908623881"
   [:loan :annuity :accumulation-factor]
   {:pre [(number? loan)
          (number? annuity)

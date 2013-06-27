@@ -26,8 +26,11 @@
 
    Examples:
      * (amount :present-value 100 :rate 0.05 :period 5)
+       => 25.0
      * (amount :present-value 500 :rate 0.1 :period 8)
-     * (amount :present-value 800 :rate 0.15 :period 12)"
+       => 400.0
+     * (amount :present-value 800 :rate 0.15 :period 12)
+       => 1440.0"
   [:present-value :rate :period]
   {:pre [(number? present-value)
          (number? rate)
@@ -44,8 +47,11 @@
 
    Examples:
      * (final-value :present-value 100 :rate 0.05 :period 5)
+       => 125.0
      * (final-value :present-value 500 :rate 0.1 :period 8)
-     * (final-value :present-value 800 :rate 0.15 :period 12)"
+       => 900.0
+     * (final-value :present-value 800 :rate 0.15 :period 12)
+       => 2240.0"
   [:present-value :rate :period]
   {:pre [(number? present-value)
          (number? rate)
@@ -65,8 +71,11 @@
 
    Examples:
      * (present-value :final-value 250 :rate 0.05 :period 5)
+       => 200.0
      * (present-value :final-value 400 :rate 0.1 :period 8)
-     * (present-value :final-value 750 :rate 0.15 :period 12)"
+       => 222.22222222222223
+     * (present-value :final-value 750 :rate 0.15 :period 12)
+       => 267.8571428571429"
   [:final-value :rate :period]
   {:pre [(number? final-value)
          (number? rate)
@@ -85,8 +94,11 @@
 
    Examples:
      * (rate :final-value 300 :present-value 150 :period 5)
+       => 1/5
      * (rate :final-value 500 :present-value 180 :period 8)
-     * (rate :final-value 800 :present-value 230 :period 12)"
+       => 2/9
+     * (rate :final-value 800 :present-value 230 :period 12)
+       => 19/92"
   [:final-value :present-value :period]
   {:pre [(number? final-value)
          (number? present-value)
@@ -104,8 +116,11 @@
 
    Examples:
      * (period :final-value 300 :present-value 150 :rate 0.05)
+       => 20.0
      * (period :final-value 500 :present-value 180 :rate 0.1)
-     * (period :final-value 800 :present-value 230 :rate 0.15)"
+       => 17.77777777777778
+     * (period :final-value 800 :present-value 230 :rate 0.15)
+       => 16.52173913043478"
   [:final-value :present-value :rate]
   {:pre [(number? final-value)
          (number? present-value)
@@ -124,8 +139,11 @@
 
    Examples:
      * (days :final-value 300 :present-value 150 :rate 0.05)
+       => 7300.0
      * (days :final-value 500 :present-value 180 :rate 0.1)
-     * (days :final-value 800 :present-value 230 :rate 0.15 :days-per-year 360)"
+       => 6488.88888888889
+     * (days :final-value 800 :present-value 230 :rate 0.15 :days-per-year 360)
+       => 5947.826086956521"
   [:final-value :present-value :rate :opt-def :days-per-year 365]
   {:pre [(number? final-value)
          (number? present-value)

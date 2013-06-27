@@ -27,8 +27,11 @@
 
    Examples:
      * (final-value :present-value 100 :rate 0.05 :period 5)
+       => 127.62815625000003
      * (final-value :present-value 500 :rate 0.1 :period 8)
-     * (final-value :present-value 800 :rate 0.15 :period 12)"
+       => 1071.7944050000008
+     * (final-value :present-value 800 :rate 0.15 :period 12)
+       => 4280.200084378965"
   [:present-value :rate :period]
   {:pre [(number? present-value)
          (number? rate)
@@ -45,8 +48,11 @@
 
    Examples:
      * (amount :present-value 100 :rate 0.05 :period 5)
+       => 27.628156250000032
      * (amount :present-value 500 :rate 0.1 :period 8)
-     * (amount :present-value 800 :rate 0.15 :period 12)"
+       => 571.7944050000008
+     * (amount :present-value 800 :rate 0.15 :period 12)
+       => 3480.2000843789647"
   [:present-value :rate :period]
   {:pre [(number? present-value)
          (number? rate)
@@ -67,8 +73,11 @@
 
    Examples:
      * (present-value :final-value 250 :rate 0.05 :period 5)
+       => 195.8815416171147
      * (present-value :final-value 400 :rate 0.1 :period 8)
-     * (present-value :final-value 750 :rate 0.15 :period 12)"
+       => 186.60295208389323
+     * (present-value :final-value 750 :rate 0.15 :period 12)
+       => 140.18036263999954"
   [:final-value :rate :period]
   {:pre [(number? final-value)
          (number? rate)
@@ -86,8 +95,11 @@
 
    Examples:
      * (yield :final-value 300 :present-value 150 :period 5)
+       => 14.869835499703509
      * (yield :final-value 500 :present-value 180 :period 8)
-     * (yield :final-value 800 :present-value 230 :period 12)"
+       => 13.621936646749933
+     * (yield :final-value 800 :present-value 230 :period 12)
+       => 10.946476081096757"
   [:final-value :present-value :period]
   {:pre [(number? final-value)
          (number? present-value)
@@ -104,8 +116,11 @@
 
    Examples:
      * (period :final-value 300 :present-value 150 :rate 0.05)
+       => 14.206699082890463
      * (period :final-value 500 :present-value 180 :rate 0.1)
-     * (period :final-value 800 :present-value 230 :rate 0.15)"
+       => 10.719224847014937
+     * (period :final-value 800 :present-value 230 :rate 0.15)
+       => 8.918968909280778"
   [:final-value :present-value :rate]
   {:pre [(number? final-value)
          (number? present-value)
@@ -124,9 +139,12 @@
      * end-part      - Length of 'broken' end period
 
    Examples:
-     * (actual :present-value 150 :rate 0.05 :start-part 0.3 :period 5 :end-part 0.5)
-     * (actual :present-value 150 :rate 0.05 :start-part 0 :period 3 :end-part 0)
-     * (actual :present-value 150 :rate 0.05 :start-part 1 :period 5 :end-part 1)"
+     * (actual-value :present-value 150 :rate 0.05 :start-part 0.3 :period 5 :end-part 0.5)
+       => 199.17171458789062
+     * (actual-value :present-value 150 :rate 0.05 :start-part 0 :period 3 :end-part 0)
+       => 173.64375
+     * (actual-value :present-value 150 :rate 0.05 :start-part 1 :period 5 :end-part 1)
+       => 211.06506339843756"
   [:present-value :rate :start-part :period :end-part]
   (* present-value
      (inc (* rate start-part))
@@ -145,8 +163,11 @@
 
    Examples:
      * (final-annual-value :present-value 100 :rate 0.05 :period 5 :in-year-period 12)
+       => 128.33586785035118
      * (final-annual-value :present-value 500 :rate 0.1 :period 8 :in-year-period 12)
-     * (final-annual-value :present-value 800 :rate 0.15 :period 12 :in-year-period 4)"
+       => 1109.0878155189757
+     * (final-annual-value :present-value 800 :rate 0.15 :period 12 :in-year-period 4)
+       => 4682.9448738035235"
   [:present-value :rate :period :in-year-period]
   {:pre [(number? present-value)
          (number? rate)
@@ -163,8 +184,11 @@
 
    Examples:
      * (relative-annual-rate :rate 0.05 :in-year-period 12)
+       => 0.004166666666666667
      * (relative-annual-rate :rate 0.1 :in-year-period 4)
-     * (relative-annual-rate :rate 0.15 :in-year-period 6)"
+       => 0.025
+     * (relative-annual-rate :rate 0.15 :in-year-period 6)
+       => 0.024999999999999998"
   [:rate :in-year-period]
   {:pre [(number? rate)
          (number? in-year-period)]}
@@ -179,8 +203,11 @@
 
    Examples:
      * (conformal-annual-rate :rate 0.05 :in-year-period 12)
+       => 0.0040741237836483535
      * (conformal-annual-rate :rate 0.1 :in-year-period 4)
-     * (conformal-annual-rate :rate 0.15 :in-year-period 6)"
+       => 0.02411368908444511
+     * (conformal-annual-rate :rate 0.15 :in-year-period 6)
+       => 0.023567073118145654"
   [:rate :in-year-period]
   {:pre [(number? rate)
          (number? in-year-period)]}
@@ -195,8 +222,11 @@
 
    Examples:
      * (effective-annual-rate :relative-annual-rate 0.05 :in-year-period 12)
+       => 0.7958563260221301
      * (effective-annual-rate :relative-annual-rate 0.1 :in-year-period 4)
+       => 0.4641000000000006
      * (effective-annual-rate :relative-annual-rate 0.15 :in-year-period 6)
+       => 1.313060765624999
 
    References:
      * https://en.wikipedia.org/wiki/Effective_annual_rate"
@@ -215,8 +245,11 @@
 
    Examples:
      * (final-continuous-value :present-value 100 :rate 0.05 :period 5)
+       => 128.40254166877415
      * (final-continuous-value :present-value 150 :rate 0.1 :period 8)
-     * (final-continuous-value :present-value 180 :rate 0.15 :period 12)"
+       => 333.8311392738702
+     * (final-continuous-value :present-value 180 :rate 0.15 :period 12)
+       => 1088.93654359433"
   [:present-value :rate :period]
   {:pre [(number? present-value)
          (number? rate)
@@ -231,8 +264,11 @@
 
    Examples:
      * (intensity :rate 0.05)
+       => 0.04879016416943205
      * (intensity :rate 0.1)
-     * (intensity :rate 0.15)"
+       => 0.09531017980432493
+     * (intensity :rate 0.15)
+       => 0.13976194237515863"
   [:rate]
   {:pre [(number? rate)]}
   (ln (inc rate)))
@@ -245,8 +281,11 @@
 
    Examples:
      * (rate :intensity 0.23)
+       => 0.25860000992947785
      * (rate :intensity 0.098)
-     * (rate :intensity 0.74)"
+       => 0.10296278510850776
+     * (rate :intensity 0.74)
+       => 1.0959355144943643"
   [:intensity]
   {:pre [(number? intensity)]}
   (dec (exp intensity)))

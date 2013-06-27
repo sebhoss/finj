@@ -17,8 +17,11 @@
 
    Examples:
      * (due-value :amount 100 :rate 0.05 :period 5)
+       => 515.0
      * (due-value :amount 150 :rate 0.1 :period 8)
-     * (due-value :amount 180 :rate 0.15 :period 12)"
+       => 1267.5
+     * (due-value :amount 180 :rate 0.15 :period 12)
+       => 2335.5"
   [:amount :rate :period]
   {:pre [(number? amount)
          (number? rate)
@@ -36,8 +39,11 @@
 
    Examples:
      * (immediate-value :amount 100 :rate 0.05 :period 5)
+       => 509.99999999999994
      * (immediate-value :amount 150 :rate 0.1 :period 8)
-     * (immediate-value :amount 180 :rate 0.15 :period 12)"
+       => 1252.5
+     * (immediate-value :amount 180 :rate 0.15 :period 12)
+       => 2308.5"
   [:amount :rate :period]
   {:pre [(number? amount)
          (number? rate)

@@ -24,8 +24,11 @@
 
    Examples:
      * (final-due-value :payment 100 :accumulation-factor 1.05 :period 5)
+       => 580.1912812500002
      * (final-due-value :payment 150 :accumulation-factor 1.1 :period 8)
-     * (final-due-value :payment 180 :accumulation-factor 1.15 :period 12)"
+       => 1886.921536500001
+     * (final-due-value :payment 180 :accumulation-factor 1.15 :period 12)
+       => 6003.345145553718"
   [:payment :accumulation-factor :period]
   {:pre [(number? payment)
          (number? accumulation-factor)
@@ -44,8 +47,11 @@
 
    Examples:
      * (final-immediate-value :payment 100 :accumulation-factor 1.05 :period 5)
+       => 552.5631250000001
      * (final-immediate-value :payment 150 :accumulation-factor 1.1 :period 8)
-     * (final-immediate-value :payment 180 :accumulation-factor 1.15 :period 12)"
+       => 1715.3832150000007
+     * (final-immediate-value :payment 180 :accumulation-factor 1.15 :period 12)
+       => 5220.300126568451"
   [:payment :accumulation-factor :period]
   {:pre [(number? payment)
          (number? accumulation-factor)
@@ -64,8 +70,11 @@
 
    Examples:
      * (present-due-value :payment 100 :accumulation-factor 1.05 :period 5)
+       => 454.5950504162361
      * (present-due-value :payment 150 :accumulation-factor 1.1 :period 8)
-     * (present-due-value :payment 180 :accumulation-factor 1.15 :period 12)"
+       => 880.2628226539398
+     * (present-due-value :payment 180 :accumulation-factor 1.15 :period 12)
+       => 1122.0681327424015"
   [:payment :accumulation-factor :period]
   {:pre [(number? payment)
          (number? accumulation-factor)
@@ -85,8 +94,11 @@
 
    Examples:
      * (present-immediate-value :payment 100 :accumulation-factor 1.05 :period 5)
+       => 432.947667063082
      * (present-immediate-value :payment 150 :accumulation-factor 1.1 :period 8)
-     * (present-immediate-value :payment 180 :accumulation-factor 1.15 :period 12)"
+       => 800.2389296853996
+     * (present-immediate-value :payment 180 :accumulation-factor 1.15 :period 12)
+       => 975.7114197760012"
   [:payment :accumulation-factor :period]
   {:pre [(number? payment)
          (number? accumulation-factor)
@@ -106,8 +118,11 @@
 
    Examples:
      * (perpetuity-due-value :payment 100 :accumulation-factor 1.05)
+       => 2099.999999999998
      * (perpetuity-due-value :payment 150 :accumulation-factor 1.1)
-     * (perpetuity-due-value :payment 180 :accumulation-factor 1.15)"
+       => 1649.9999999999986
+     * (perpetuity-due-value :payment 180 :accumulation-factor 1.15)
+       => 1380.0000000000007"
   [:payment :accumulation-factor]
   {:pre [(number? payment)
          (number? accumulation-factor)]}
@@ -124,8 +139,11 @@
 
    Examples:
      * (perpetuity-immediate-value :payment 100 :accumulation-factor 1.05)
+       => 1999.9999999999982
      * (perpetuity-immediate-value :payment 150 :accumulation-factor 1.1)
-     * (perpetuity-immediate-value :payment 180 :accumulation-factor 1.15)"
+       => 1499.9999999999986
+     * (perpetuity-immediate-value :payment 180 :accumulation-factor 1.15)
+       => 1200.0000000000007"
   [:payment :accumulation-factor]
   {:pre [(number? payment)
          (number? accumulation-factor)]}
@@ -136,15 +154,18 @@
    either the final or present immediate value.
 
    Parameters:
-     * payment
-     * accumulation-factor
-     * final-immediate-value
-     * present-immediate-value
+     * payment                 - Amount of pension payment per period
+     * accumulation-factor     - Accumulation factor per period
+     * final-immediate-value   - Wanted final immediate value (optional)
+     * present-immediate-value - Wanted present immediate value (optional)
 
    Examples:
      * (period :payment 100 :accumulation-factor 1.1 :present-immediate-value 500)
+       => 7.272540897341723
      * (period :payment 100 :accumulation-factor 1.1 :final-immediate-value 500)
-     * (period :payment 230 :accumulation-factor 1.15 :present-immediate-value 1280)"
+       => 4.254163709905892
+     * (period :payment 230 :accumulation-factor 1.15 :present-immediate-value 1280)
+       => 12.882571024691392"
   [:payment :accumulation-factor
    :opt :final-immediate-value
         :present-immediate-value]
