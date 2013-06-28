@@ -53,6 +53,7 @@ h1. Additional Resources
 
 * "General GitHub documentation":http://help.github.com/
 * "GitHub pull request documentation":http://help.github.com/send-pull-requests/
+* "Clojure style guide":https://github.com/bbatsov/clojure-style-guide
 
 h1. Setup
 
