@@ -1,4 +1,4 @@
-h1. finj
+h1. finj "!https://travis-ci.org/sebhoss/finj.png!":https://travis-ci.org/sebhoss/finj
 
 p. finj is a Clojure library for financial computations.
 
