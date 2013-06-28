@@ -104,6 +104,20 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+      
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.1.2</version>
+        <executions>
+          <execution>
+            <id>sources-jar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
