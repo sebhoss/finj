@@ -51,8 +51,8 @@ h2. Submitting Changes
 
 h1. Additional Resources
 
-* [General GitHub documentation](http://help.github.com/)
-* [GitHub pull request documentation](http://help.github.com/send-pull-requests/)
+* "General GitHub documentation":http://help.github.com/
+* "GitHub pull request documentation":http://help.github.com/send-pull-requests/
 
 h1. Setup
 
