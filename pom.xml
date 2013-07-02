@@ -13,7 +13,7 @@
 
   <groupId>com.github.sebhoss</groupId>
   <artifactId>finj</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>clojure</packaging>
   <name>finj</name>
   <description>Finance library written in Clojure.</description>
