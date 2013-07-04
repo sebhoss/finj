@@ -139,13 +139,13 @@ bc. <dependencies>
   <dependency>
     <groupId>com.github.sebhoss</groupId>
     <artifactId>finj</artifactId>
-    <version>1.0.0</version>
+    <version>[1.0.0,2.0.0)</version>
   </dependency>
 </dependencies>
 
 h3. Leiningen
 
-bc. [com.github.sebhoss/finj "1.0.0"]
+bc. [com.github.sebhoss/finj "[1.0.0,2.0.0)"]
 
 h2. License
 
