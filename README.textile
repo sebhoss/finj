@@ -5,7 +5,7 @@ p. finj is a Clojure library for financial computations.
 
 h2. Usage
 
-p. The library is divided into the following namespaces and functions: 
+p. The library lives under @com.github.sebhoss.finj@ and is divided into the following namespaces and functions: 
 
 h3. annuity/
 
