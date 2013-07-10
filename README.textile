@@ -1,4 +1,4 @@
-h1. finj "!https://travis-ci.org/sebhoss/finj.png!":https://travis-ci.org/sebhoss/finj "!https://www.ohloh.net/p/finj-clj/widgets/project_thin_badge.gif!":https://www.ohloh.net/p/finj-clj/widgets/project_thin_badge.gif
+h1. finj "!https://travis-ci.org/sebhoss/finj.png!":https://travis-ci.org/sebhoss/finj "!https://www.ohloh.net/p/finj-clj/widgets/project_thin_badge.gif!":https://www.ohloh.net/p/finj-clj/
 
 p. finj is a Clojure library for financial computations.
 
