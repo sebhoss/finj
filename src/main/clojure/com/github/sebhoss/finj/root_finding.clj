@@ -115,7 +115,7 @@
                          (- first-value (/ (function first-value)
                                            denominator)))))
     :next-first (fn [result] (:estimate result))
-    :next-second (fn [result] nil)))
+    :next-second (fn [_] nil)))
 
 (defnk regula-falsi
   "The false position method or regula falsi method is a term for problem-solving methods in arithmetic, algebra, and
