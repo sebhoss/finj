@@ -70,15 +70,9 @@
       <version>1.5.1</version>
     </dependency>
     <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>tools.namespace</artifactId>
-      <version>0.2.3</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>java.classpath</artifactId>
-      <version>0.2.1</version>
+      <groupId>com.github.sebhoss</groupId>
+      <artifactId>bootstrap-clj</artifactId>
+      <version>1.0.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
