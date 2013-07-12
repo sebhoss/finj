@@ -32,7 +32,7 @@
           (if (not= state current)
             result
             (update-in result [state] conj curr)))))))
- 
+
 (defmacro defnk
   "Warning: Binds \"m\" to the args-map.
   ks-args are obligatory keys until a :opt or :opt-def; then optional keys as an
