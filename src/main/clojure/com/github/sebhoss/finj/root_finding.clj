@@ -58,14 +58,14 @@
     :tolerance tolerance
     :max-iterations max-iterations
     :next-estimate #(mean %1 %2)
-    :next-first (fn [result]
-                  (if (pos? (:estimation-error result))
-                    (:first-value result)
-                    (:estimate result)))
-    :next-second (fn [result]
-                   (if (pos? (:estimation-error result))
-                     (:estimate result)
-                     (:second-value result)))))
+    :next-first (fn [interim]
+                  (if (pos? (:estimation-error interim))
+                    (:first-value interim)
+                    (:estimate interim)))
+    :next-second (fn [interim]
+                   (if (pos? (:estimation-error interim))
+                     (:estimate interim)
+                     (:second-value interim)))))
 
 (defnk secant
   "The secant method is a root-finding algorithm that uses a succession of roots of secant lines to better approximate
@@ -88,10 +88,10 @@
                        (- first-value (* (/ (- first-value second-value)
                                             (- fa fb))
                                          fa))))
-    :next-first (fn [result]
-                  (:estimate result))
-    :next-second (fn [result]
-                   (:first-value result))))
+    :next-first (fn [interim]
+                  (:estimate interim))
+    :next-second (fn [interim]
+                   (:first-value interim))))
 
 (defnk newton
   "The newton method is a method for finding successively better approximations to the roots (or zeroes) of a
@@ -114,7 +114,7 @@
                          (throw (IllegalArgumentException. "denominator too small"))
                          (- first-value (/ (function first-value)
                                            denominator)))))
-    :next-first (fn [result] (:estimate result))
+    :next-first (fn [interim] (:estimate interim))
     :next-second (fn [_] nil)))
 
 (defnk regula-falsi
@@ -140,11 +140,11 @@
                            fb (function second-value)]
                        (- first-value (/ (* fa (- second-value first-value))
                               (- fb fa)))))
-    :next-first (fn [result]
-                  (if (pos? (:estimation-error result))
-                    (:first-value result)
-                    (:estimate result)))
-    :next-second (fn [result]
-                   (if (pos? (:estimation-error result))
-                     (:estimate result)
-                     (:second-value result)))))
+    :next-first (fn [interim]
+                  (if (pos? (:estimation-error interim))
+                    (:first-value interim)
+                    (:estimate interim)))
+    :next-second (fn [interim]
+                   (if (pos? (:estimation-error interim))
+                     (:estimate interim)
+                     (:second-value interim)))))
