@@ -81,10 +81,6 @@ h3. loan/
 * @annuity-interest-amount@ _:annuity :first-annuity-amount :period :accumulation-factor_
 * @period@ _:loan :annuity :accumulation-factor_
 
-h3. math/
-
-p. Various math functions (most from JDK/Math): @e@, @Pi@, @mean@, @abs@, @floor@, @ceil@, @round@, @sgn@, @signum@, @sgn-eq?@, @sgn-different?@, @ln@, @log10@, @exp@, @pow@, @sqrt@, @root@, @sin@, @cos@, @tan@, @asin@, @acos@, @atan@, @sinh@, @cosh@, @tanh@
-
 h3. pension/
 
 * @final-due-value@ _:payment :accumulation-factor :period_
@@ -99,12 +95,6 @@ h3. periodic-payment/
 
 * @due-payments@ _:amount :rate :period_
 * @immediate-payments@ _:amount :rate :period_
-
-h3. predicate/
-
-* @(not-nil? x)@ - true if x is not nil, false otherwise
-* @(≈ x y epsilon)@ - true if x is within epsilon of y, false otherwise
-* @(≈0 x epsilon)@ - true if x is within epsilon of zero
 
 h3. ratio/
 
