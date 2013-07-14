@@ -3,7 +3,7 @@
 ;   License, Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 
 (ns com.github.sebhoss.finj.common
-  (:require [com.github.sebhoss.finj.def :refer :all]))
+  (:require [com.github.sebhoss.def :refer :all]))
 
 (defnk rate [:rate-per-cent]
   (/ rate-per-cent 100))

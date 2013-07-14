@@ -19,7 +19,7 @@
    References:
      * http://en.wikipedia.org/wiki/Compound_interest"
   (:require [com.github.sebhoss.finj.math :refer :all]
-            [com.github.sebhoss.finj.def :refer :all]))
+            [com.github.sebhoss.def :refer :all]))
 
 (defnk final-value
   "Calculates the final value for a given investment with a given rate over a given period of time.

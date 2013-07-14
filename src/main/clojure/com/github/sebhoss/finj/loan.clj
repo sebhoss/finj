@@ -16,7 +16,7 @@
    References:
      * http://en.wikipedia.org/wiki/Loan"
   (:require [com.github.sebhoss.finj.math :refer :all]
-            [com.github.sebhoss.finj.def :refer :all]))
+            [com.github.sebhoss.def :refer :all]))
 
 (defnk rate-balance-due
   "Calculates the remaining due value after a certain amount of periods.

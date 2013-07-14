@@ -9,7 +9,7 @@
 
    References:
      * http://en.wikipedia.org/wiki/Annuity_(finance_theory)"
-  (:require [com.github.sebhoss.finj.def :refer :all]
+  (:require [com.github.sebhoss.def :refer :all]
             [com.github.sebhoss.finj.math :refer :all]))
 
 (defnk present-immediate-factor

@@ -11,7 +11,7 @@
 
    References:
      * http://en.wikipedia.org/wiki/Investment"
-  (:require [com.github.sebhoss.finj.def :refer :all]
+  (:require [com.github.sebhoss.def :refer :all]
             [com.github.sebhoss.finj.math :refer :all]
             [com.github.sebhoss.finj.annuity :refer :all]))
 

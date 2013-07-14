@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.root-finding
   "Root finding algorithms"
-  (:require [com.github.sebhoss.finj.def :refer :all]
+  (:require [com.github.sebhoss.def :refer :all]
             [com.github.sebhoss.finj.math :refer :all]))
 
 (defrecord SearchResult [estimate estimation-error number-of-iterations first-value second-value])

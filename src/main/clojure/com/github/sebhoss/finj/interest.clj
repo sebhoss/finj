@@ -18,7 +18,7 @@
 
    References:
      * http://en.wikipedia.org/wiki/Interest"
-  (:require [com.github.sebhoss.finj.def :refer :all]))
+  (:require [com.github.sebhoss.def :refer :all]))
 
 (defnk amount
   "Calculates the generated amount of interest for a given investment with a given rate over a given period of time.

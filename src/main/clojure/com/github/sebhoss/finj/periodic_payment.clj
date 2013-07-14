@@ -9,7 +9,7 @@
      * amount - Amount of an individual payment
      * rate   - Rate of interest
      * period - Payment periods"
-  (:require [com.github.sebhoss.finj.def :refer :all]))
+  (:require [com.github.sebhoss.def :refer :all]))
 
 (defnk due-value
   "Calculates the due value of a sequence of periodic payments.
