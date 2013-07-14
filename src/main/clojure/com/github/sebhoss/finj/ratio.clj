@@ -214,3 +214,50 @@
   {:pre [(number? equity)
          (number? total-assets)]}
   (/ equity total-assets))
+
+(defnk return-on-assets
+  "The return on assets (ROA) percentage shows how profitable a company's assets are in generating revenue.
+
+   Parameters:
+     * income - Net income of the company
+     * assets - Total assets
+
+   Examples:
+     * (return-on-assets :income 1000 :assets 10000)
+       => 1/10
+     * (return-on-assets :income 1200 :assets 5000)
+       => 6/25
+     * (return-on-assets :income 1800 :assets 3600)
+       => 1/2
+
+   References:
+     * http://en.wikipedia.org/wiki/Return_on_assets"
+  [:income :assets]
+  (/ income assets))
+
+(defnk sustainable-growth-rate
+  "The Sustainable Growth Rate (SGR) describes optimal growth from a financial perspective assuming a given 
+   strategy with clear defined financial frame conditions/ limitations. Sustainable growth is defined as the annual
+   percentage of increase in sales that is consistent with a defined financial policy (target debt to equity ratio,
+   target dividend payout ratio, target profit margin, target ratio of total assets to net sales). This concept
+   provides a comprehensive financial framework and formula for case/ company specific SGR calculations
+
+   Parameters:
+     * profit-margin         - Existing and target profit margin
+     * dividend-payout-ratio - Target dividend payout ratio
+     * debt-to-equity-ratio  - Target total debt to equity ratio
+     * assets-to-sales-ratio - Ratio of total assets to sales
+
+   Examples:
+     * (sustainable-growth-rate :profit-margin 0.05 :dividend-payout-ratio 0.02 :debt-to-equity-ratio 0.25 :assets-to-sales-ratio 0.5)
+       => 0.1396011396011396
+     * (sustainable-growth-rate :profit-margin 0.15 :dividend-payout-ratio 0.04 :debt-to-equity-ratio 0.35 :assets-to-sales-ratio 0.2)
+       => 34.71428571428558
+     * (sustainable-growth-rate :profit-margin 0.1 :dividend-payout-ratio 0.08 :debt-to-equity-ratio 0.12 :assets-to-sales-ratio 0.4)
+       => 0.3469827586206897
+
+   References:
+     * http://en.wikipedia.org/wiki/Sustainable_growth_rate"
+  [:profit-margin :dividend-payout-ratio :debt-to-equity-ratio :assets-to-sales-ratio]
+  (/ (* profit-margin (- 1 dividend-payout-ratio) (inc debt-to-equity-ratio))
+     (- assets-to-sales-ratio (* profit-margin (- 1 dividend-payout-ratio) (inc debt-to-equity-ratio)))))

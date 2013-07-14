@@ -38,3 +38,15 @@
 (deftest equity-ratio-test
   (testing "with integers"
     (is (= 1/10 (equity-ratio :equity 1000 :total-assets 10000)))))
+
+(deftest return-on-assets-test
+  (testing "with integers"
+    (is (= 1/10 (return-on-assets :income 1000 :assets 10000)))))
+
+(deftest sustainable-growth-rate-test
+  (testing "with low growth rate"
+    (is (= 0.1396011396011396 (sustainable-growth-rate
+                       :profit-margin 0.05
+                       :dividend-payout-ratio 0.02
+                       :debt-to-equity-ratio 0.25
+                       :assets-to-sales-ratio 0.5)))))

@@ -117,6 +117,8 @@ h3. ratio/
 * @capital-recovery-factor@ _:rate :period_
 * @capitalization-rate@ _:income :cost_
 * @equity-ratio@ _:equity :total-assets_
+* @return-on-assets@ _:income :assets_
+* @sustainable-growth-rate@ _:profit-margin :dividend-payout-ratio :debt-to-equity-ratio :assets-to-sales-ratio_
 
 h3. root-finding/
 
