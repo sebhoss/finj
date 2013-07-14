@@ -261,3 +261,29 @@
   [:profit-margin :dividend-payout-ratio :debt-to-equity-ratio :assets-to-sales-ratio]
   (/ (* profit-margin (- 1 dividend-payout-ratio) (inc debt-to-equity-ratio))
      (- assets-to-sales-ratio (* profit-margin (- 1 dividend-payout-ratio) (inc debt-to-equity-ratio)))))
+
+(defnk treynor-ratio
+  "The Treynor ratio (sometimes called the reward-to-volatility ratio or Treynor measure[1]), named after Jack L. Treynor,
+   is a measurement of the returns earned in excess of that which could have been earned on an investment that has no
+   diversifiable risk (e.g., Treasury Bills or a completely diversified portfolio), per each unit of market risk assumed.
+
+   Parameters:
+     * portfolio-return - Existing and target profit margin
+     * risk-free-rate   - Target dividend payout ratio
+     * portfolio-beta   - Target total debt to equity ratio
+
+   Examples:
+     * (treynor-ratio :portfolio-return 0.08 :risk-free-rate 0.05 :portfolio-beta 1.0)
+       => 0.03
+     * (treynor-ratio :portfolio-return 0.04 :risk-free-rate 0.06 :portfolio-beta 0.8)
+       => -0.024999999999999994
+     * (treynor-ratio :portfolio-return 0.1 :risk-free-rate 0.05 :portfolio-beta 1.2)
+       => 0.04166666666666667
+     * (treynor-ratio :portfolio-return 1/10 :risk-free-rate 5/100 :portfolio-beta 12/10)
+       => 1/24
+
+   References:
+     * http://en.wikipedia.org/wiki/Treynor_ratio"
+  [:portfolio-return :risk-free-rate :portfolio-beta]
+  (/ (- portfolio-return risk-free-rate)
+     portfolio-beta))

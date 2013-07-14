@@ -119,6 +119,7 @@ h3. ratio/
 * @equity-ratio@ _:equity :total-assets_
 * @return-on-assets@ _:income :assets_
 * @sustainable-growth-rate@ _:profit-margin :dividend-payout-ratio :debt-to-equity-ratio :assets-to-sales-ratio_
+* @treynor-ratio@ _:portfolio-return :risk-free-rate :portfolio-beta_
 
 h3. root-finding/
 

@@ -50,3 +50,7 @@
                        :dividend-payout-ratio 0.02
                        :debt-to-equity-ratio 0.25
                        :assets-to-sales-ratio 0.5)))))
+
+(deftest treynor-ratio-test
+  (testing "with ratios"
+    (is (= 1/24 (treynor-ratio :portfolio-return 1/10 :risk-free-rate 5/100 :portfolio-beta 12/10)))))
