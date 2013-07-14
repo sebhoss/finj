@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.share-price-test
   (:require [com.github.sebhoss.finj.share-price :refer :all]
-            [com.github.sebhoss.finj.predicate :refer :all]
+            [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 
 (deftest market-price-test

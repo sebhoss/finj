@@ -16,7 +16,7 @@
      * http://en.wikipedia.org/wiki/Pension"
   (:require [com.github.sebhoss.math :refer :all]
             [com.github.sebhoss.def :refer :all]
-            [com.github.sebhoss.finj.predicate :refer :all]))
+            [com.github.sebhoss.predicate :refer :all]))
 
 (defnk final-due-value
   "Calculates the final due value of a pension.

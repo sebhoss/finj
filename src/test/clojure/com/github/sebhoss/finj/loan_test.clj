@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.loan-test
   (:require [com.github.sebhoss.finj.loan :refer :all]
-            [com.github.sebhoss.finj.predicate :refer :all]
+            [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 
 (deftest rate-balance-due-test

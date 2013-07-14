@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.deprecation-test
   (:require [com.github.sebhoss.finj.deprecation :refer :all]
-            [com.github.sebhoss.finj.predicate :refer :all]
+            [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 
 (deftest straight-line-annual-expense-test

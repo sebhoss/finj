@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.annuity-test
   (:require [com.github.sebhoss.finj.annuity :refer :all]
-            [com.github.sebhoss.finj.predicate :refer :all]
+            [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 
 (deftest present-immediate-factor-test

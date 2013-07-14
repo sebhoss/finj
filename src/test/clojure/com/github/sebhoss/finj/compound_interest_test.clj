@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.compound-interest-test
   (:require [com.github.sebhoss.finj.compound-interest :refer :all]
-            [com.github.sebhoss.finj.predicate :refer :all]
+            [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 
 (deftest final-value-test

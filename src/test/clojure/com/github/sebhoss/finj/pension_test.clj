@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.pension-test
   (:require [com.github.sebhoss.finj.pension :refer :all]
-            [com.github.sebhoss.finj.predicate :refer :all]
+            [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 
 (deftest final-due-value-test

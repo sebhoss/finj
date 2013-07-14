@@ -1,6 +1,6 @@
 (ns com.github.sebhoss.finj.ratio-test
   (:require [com.github.sebhoss.finj.ratio :refer :all]
-            [com.github.sebhoss.finj.predicate :refer :all]
+            [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 
 (deftest debt-ratio-test

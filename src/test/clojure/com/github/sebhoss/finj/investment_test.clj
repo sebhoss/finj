@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.investment-test
   (:require [com.github.sebhoss.finj.investment :refer :all]
-            [com.github.sebhoss.finj.predicate :refer :all]
+            [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 
 (deftest net-present-value-test

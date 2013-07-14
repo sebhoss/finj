@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.periodic-payment-test
   (:require [com.github.sebhoss.finj.periodic-payment :refer :all]
-            [com.github.sebhoss.finj.predicate :refer :all]
+            [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 
 (deftest due-value-test
