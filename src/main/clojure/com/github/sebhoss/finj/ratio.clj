@@ -233,6 +233,8 @@
    References:
      * http://en.wikipedia.org/wiki/Return_on_assets"
   [:income :assets]
+  {:pre [(number? income)
+         (number? assets)]}
   (/ income assets))
 
 (defnk sustainable-growth-rate
@@ -259,6 +261,10 @@
    References:
      * http://en.wikipedia.org/wiki/Sustainable_growth_rate"
   [:profit-margin :dividend-payout-ratio :debt-to-equity-ratio :assets-to-sales-ratio]
+  {:pre [(number? profit-margin )
+         (number? dividend-payout-ratio)
+         (number? debt-to-equity-ratio)
+         (number? assets-to-sales-ratio)]}
   (/ (* profit-margin (- 1 dividend-payout-ratio) (inc debt-to-equity-ratio))
      (- assets-to-sales-ratio (* profit-margin (- 1 dividend-payout-ratio) (inc debt-to-equity-ratio)))))
 
@@ -285,5 +291,8 @@
    References:
      * http://en.wikipedia.org/wiki/Treynor_ratio"
   [:portfolio-return :risk-free-rate :portfolio-beta]
+  {:pre [(number? portfolio-return)
+         (number? risk-free-rate)
+         (number? portfolio-beta)]}
   (/ (- portfolio-return risk-free-rate)
      portfolio-beta))
