@@ -14,7 +14,7 @@
 
    References:
      * http://en.wikipedia.org/wiki/Pension"
-  (:require [com.github.sebhoss.finj.math :refer :all]
+  (:require [com.github.sebhoss.math :refer :all]
             [com.github.sebhoss.def :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]))
 

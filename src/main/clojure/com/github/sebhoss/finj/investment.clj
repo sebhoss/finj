@@ -12,7 +12,7 @@
    References:
      * http://en.wikipedia.org/wiki/Investment"
   (:require [com.github.sebhoss.def :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]
+            [com.github.sebhoss.math :refer :all]
             [com.github.sebhoss.finj.annuity :refer :all]))
 
 (defnk net-present-value

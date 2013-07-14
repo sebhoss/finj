@@ -8,7 +8,7 @@
 
    References:
      * http://en.wikipedia.org/wiki/Share_price"
-  (:require [com.github.sebhoss.finj.math :refer :all]))
+  (:require [com.github.sebhoss.math :refer :all]))
 
 (defmulti market-price
   "In economics, market price is the economic price for which a good or service is offered in the marketplace. It is of

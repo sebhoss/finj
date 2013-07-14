@@ -18,7 +18,7 @@
 
    References:
      * http://en.wikipedia.org/wiki/Compound_interest"
-  (:require [com.github.sebhoss.finj.math :refer :all]
+  (:require [com.github.sebhoss.math :refer :all]
             [com.github.sebhoss.def :refer :all]))
 
 (defnk final-value

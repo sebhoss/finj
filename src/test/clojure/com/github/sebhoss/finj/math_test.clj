@@ -2,8 +2,8 @@
 ;   You can redistribute it and/or modify it under the terms of the Do What The Fuck You Want To Public
 ;   License, Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 
-(ns com.github.sebhoss.finj.math-test
-  (:require [com.github.sebhoss.finj.math :refer :all]
+(ns com.github.sebhoss.math-test
+  (:require [com.github.sebhoss.math :refer :all]
             [clojure.test :refer :all]))
 
 (deftest sgn-test

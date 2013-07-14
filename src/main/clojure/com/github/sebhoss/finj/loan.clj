@@ -15,7 +15,7 @@
 
    References:
      * http://en.wikipedia.org/wiki/Loan"
-  (:require [com.github.sebhoss.finj.math :refer :all]
+  (:require [com.github.sebhoss.math :refer :all]
             [com.github.sebhoss.def :refer :all]))
 
 (defnk rate-balance-due

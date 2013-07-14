@@ -19,7 +19,7 @@
    References:
      * http://en.wikipedia.org/wiki/Depreciation"
   (:require [com.github.sebhoss.def :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]
+            [com.github.sebhoss.math :refer :all]
             [com.github.sebhoss.finj.predicate :refer :all]))
 
 (defnk straight-line-annual-expense

@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.ratio
   (:require [com.github.sebhoss.def :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]))
+            [com.github.sebhoss.math :refer :all]))
 
 (defnk debt-ratio 
   "Debt Ratio is a financial ratio that indicates the percentage of a company's assets that are provided via debt.

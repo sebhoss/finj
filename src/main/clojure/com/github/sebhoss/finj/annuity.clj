@@ -10,7 +10,7 @@
    References:
      * http://en.wikipedia.org/wiki/Annuity_(finance_theory)"
   (:require [com.github.sebhoss.def :refer :all]
-            [com.github.sebhoss.finj.math :refer :all]))
+            [com.github.sebhoss.math :refer :all]))
 
 (defnk present-immediate-factor
   "Calculates the annuity immediate factor.

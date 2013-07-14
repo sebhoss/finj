@@ -4,7 +4,7 @@
 
 (ns com.github.sebhoss.finj.predicate
   "Common predicates for everyday commodities"
-  (:require [com.github.sebhoss.finj.math :refer :all]))
+  (:require [com.github.sebhoss.math :refer :all]))
 
 (def not-nil? (comp not nil?))
 
