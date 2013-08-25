@@ -1,3 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This program is free software. It comes without any warranty, to
+    the extent permitted by applicable law. You can redistribute it
+    and/or modify it under the terms of the Do What The Fuck You Want
+    To Public License, Version 2, as published by Sam Hocevar. See
+    http://www.wtfpl.net/ for more details.
+
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
@@ -63,32 +73,38 @@
     <project.reporting.outputEncoding>${global.encoding}</project.reporting.outputEncoding>
   </properties>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.github.sebhoss</groupId>
+        <artifactId>clojure-bom</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
-      <version>1.5.1</version>
     </dependency>
     <dependency>
       <groupId>com.github.sebhoss</groupId>
       <artifactId>def-clj</artifactId>
-      <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>com.github.sebhoss</groupId>
       <artifactId>math-clj</artifactId>
-      <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>com.github.sebhoss</groupId>
       <artifactId>bootstrap-clj</artifactId>
-      <version>1.1.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
