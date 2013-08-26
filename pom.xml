@@ -17,7 +17,7 @@
   <parent>
     <groupId>com.github.sebhoss</groupId>
     <artifactId>clojure-parent</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
   </parent>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -73,7 +73,7 @@
       <dependency>
         <groupId>com.github.sebhoss</groupId>
         <artifactId>clojure-bom</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
