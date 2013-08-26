@@ -39,5 +39,5 @@
 
 ; Call (rat) to run all tests, or (rat "math") to run only tests in that namespace
 (defn rat
-  ([] (clojure.test/run-all-tests #"com.github.sebhoss.finj.*-test"))
-  ([namespace] (clojure.test/run-all-tests (re-pattern (format "com.github.sebhoss.finj.%s-test" namespace)))))
+  ([] (run-all-tests #"com.github.sebhoss.finj.*-test"))
+  ([namespace] (run-all-tests (re-pattern (format "com.github.sebhoss.finj.%s-test" namespace)))))
