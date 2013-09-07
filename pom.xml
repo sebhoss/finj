@@ -44,9 +44,8 @@
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                                DEVELOPERS                               -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <developers>
-    <developer>
-      <id>a</id>
+  <contributors>
+    <contributor>
       <name>Adrian Heinemann</name>
       <email>adrian@heinemann.ms</email>
       <url>http://heinemann.ms/</url>
@@ -54,17 +53,8 @@
         <role>Developer</role>
       </roles>
       <timezone>Europe/Berlin</timezone>
-    </developer>
-    <developer>
-      <id>s</id>
-      <name>Sebastian Hoß</name>
-      <email>mail@shoss.de</email>
-      <roles>
-        <role>Developer</role>
-      </roles>
-      <timezone>Europe/Berlin</timezone>
-    </developer>
-  </developers>
+    </contributor>
+  </contributors>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                               DEPENDENCIES                              -->
