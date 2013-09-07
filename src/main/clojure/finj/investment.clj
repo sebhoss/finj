@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.investment
+(ns finj.investment
   "In finance, investment is putting money into something with the expectation of gain, usually over a longer term.
    This may or may not be backed by research and analysis. Most or all forms of investment involve some form of risk,
    such as investment in equities, property, and even fixed interest securities which are subject, inter alia, to
@@ -17,7 +17,7 @@
      * http://en.wikipedia.org/wiki/Investment"
   (:require [com.github.sebhoss.def :refer :all]
             [com.github.sebhoss.math :refer :all]
-            [com.github.sebhoss.finj.annuity :refer :all]))
+            [finj.annuity :refer :all]))
 
 (defnk net-present-value
   "Calculates the net present value (NPV) of a time series of cash flows.

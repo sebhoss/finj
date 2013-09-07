@@ -16,4 +16,4 @@
 (load-helpers)
 
 ; Call (rat) to run all tests, or (rat "loan") to run only tests in that namespace
-(def rat (test-shortcut #"com.github.sebhoss.finj.*-test"))
+(def rat (test-shortcut #"finj.*-test"))

@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.compound-interest
+(ns finj.compound-interest
   "Compound interest arises when interest is added to the principal, so that, from that moment on, the interest that
    has been added also earns interest. This addition of interest to the principal is called compounding.
 

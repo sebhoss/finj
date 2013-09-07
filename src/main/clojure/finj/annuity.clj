@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.annuity
+(ns finj.annuity
   "In finance theory, an annuity is a terminating 'stream' of fixed payments, i.e., a collection of payments to be
    periodically received over a specified period of time.[1] The valuation of such a stream of payments entails concepts
    such as the time value of money, interest rate, and future value.

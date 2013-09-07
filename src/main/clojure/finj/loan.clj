@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.loan
+(ns finj.loan
   "A loan is a debt evidenced by a note which specifies, among other things, the principal amount, interest rate, and
    date of repayment. A loan entails the reallocation of the subject asset(s) for a period of time, between the lender
    and the borrower.

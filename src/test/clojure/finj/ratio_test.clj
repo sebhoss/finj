@@ -6,8 +6,8 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.ratio-test
-  (:require [com.github.sebhoss.finj.ratio :refer :all]
+(ns finj.ratio-test
+  (:require [finj.ratio :refer :all]
             [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 

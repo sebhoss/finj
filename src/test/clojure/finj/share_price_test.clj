@@ -6,8 +6,8 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.share-price-test
-  (:require [com.github.sebhoss.finj.share-price :refer :all]
+(ns finj.share-price-test
+  (:require [finj.share-price :refer :all]
             [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 

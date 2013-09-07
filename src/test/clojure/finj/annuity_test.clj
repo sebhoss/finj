@@ -6,8 +6,8 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.annuity-test
-  (:require [com.github.sebhoss.finj.annuity :refer :all]
+(ns finj.annuity-test
+  (:require [finj.annuity :refer :all]
             [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 

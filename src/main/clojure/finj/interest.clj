@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.interest
+(ns finj.interest
   "Interest is a fee paid by a borrower of assets to the owner as a form of compensation for the use of the assets.
    It is most commonly the price paid for the use of borrowed money, or money earned by deposited funds.
 

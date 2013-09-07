@@ -6,8 +6,8 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.pension-test
-  (:require [com.github.sebhoss.finj.pension :refer :all]
+(ns finj.pension-test
+  (:require [finj.pension :refer :all]
             [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 

@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.root-finding
+(ns finj.root-finding
   "Root finding algorithms"
   (:require [com.github.sebhoss.def :refer :all]
             [com.github.sebhoss.math :refer :all]))

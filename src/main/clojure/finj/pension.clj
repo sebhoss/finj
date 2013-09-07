@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.pension
+(ns finj.pension
   "A pension is a contract for a fixed sum to be paid regularly to a person, typically following retirement from
    service.
 

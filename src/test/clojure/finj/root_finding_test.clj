@@ -6,8 +6,8 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.root-finding-test
-  (:require [com.github.sebhoss.finj.root-finding :refer :all]
+(ns finj.root-finding-test
+  (:require [finj.root-finding :refer :all]
             [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 

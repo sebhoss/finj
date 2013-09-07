@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.deprecation
+(ns finj.deprecation
   "In accountancy, depreciation refers to two aspects of the same concept:
      * the decrease in value of assets (fair value depreciation), and
      * the allocation of the cost of assets to periods in which the assets are used (depreciation with the matching

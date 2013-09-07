@@ -6,8 +6,8 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.common-test
-  (:require [com.github.sebhoss.finj.common :refer :all]
+(ns finj.common-test
+  (:require [finj.common :refer :all]
             [clojure.test :refer :all]))
 
 (deftest rate-test

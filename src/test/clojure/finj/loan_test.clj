@@ -6,8 +6,8 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.loan-test
-  (:require [com.github.sebhoss.finj.loan :refer :all]
+(ns finj.loan-test
+  (:require [finj.loan :refer :all]
             [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 

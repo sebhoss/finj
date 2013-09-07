@@ -6,8 +6,8 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.interest-test
-  (:require [com.github.sebhoss.finj.interest :refer :all]
+(ns finj.interest-test
+  (:require [finj.interest :refer :all]
             [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 

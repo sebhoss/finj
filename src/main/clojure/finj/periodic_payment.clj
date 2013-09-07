@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.periodic-payment
+(ns finj.periodic-payment
   "Periodic payment pay a certain amount of money per period.
 
    Definitions:

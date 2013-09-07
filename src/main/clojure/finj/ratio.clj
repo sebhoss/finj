@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.ratio
+(ns finj.ratio
   (:require [com.github.sebhoss.def :refer :all]
             [com.github.sebhoss.math :refer :all]))
 

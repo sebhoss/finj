@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.common
+(ns finj.common
   (:require [com.github.sebhoss.def :refer :all]))
 
 (defnk rate [:rate-per-cent]

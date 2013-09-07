@@ -6,7 +6,7 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.share-price
+(ns finj.share-price
   "A share price is the price of a single share of a number of saleable stocks of a company, derivative or other
    financial asset.
 

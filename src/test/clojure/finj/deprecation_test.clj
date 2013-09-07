@@ -6,8 +6,8 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.deprecation-test
-  (:require [com.github.sebhoss.finj.deprecation :refer :all]
+(ns finj.deprecation-test
+  (:require [finj.deprecation :refer :all]
             [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 

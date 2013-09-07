@@ -6,8 +6,8 @@
 ; http://www.wtfpl.net/ for more details.
 ;
 
-(ns com.github.sebhoss.finj.periodic-payment-test
-  (:require [com.github.sebhoss.finj.periodic-payment :refer :all]
+(ns finj.periodic-payment-test
+  (:require [finj.periodic-payment :refer :all]
             [com.github.sebhoss.predicate :refer :all]
             [clojure.test :refer :all]))
 
